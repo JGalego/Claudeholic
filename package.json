@@ -1,0 +1,16 @@
+{
+  "name": "claudeholic",
+  "version": "0.0.1",
+  "private": true,
+  "description": "One question. Several hours. An unofficial generative-AI dependency check.",
+  "type": "module",
+  "scripts": {
+    "check": "node scripts/check-site.mjs",
+    "serve": "node scripts/serve.mjs",
+    "test": "node --test && npm run check"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}

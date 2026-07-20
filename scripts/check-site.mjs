@@ -1,0 +1,199 @@
+import { spawnSync } from "node:child_process";
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const failures = [];
+let assertionCount = 0;
+
+function report(condition, message) {
+  assertionCount += 1;
+
+  if (!condition) {
+    failures.push(message);
+  }
+}
+
+function relativePath(filePath) {
+  return path.relative(ROOT, filePath).split(path.sep).join("/");
+}
+
+function listFiles(directory, predicate) {
+  return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    const entryPath = path.join(directory, entry.name);
+
+    if (entry.isDirectory()) {
+      return entry.name === ".git" || entry.name === "node_modules"
+        ? []
+        : listFiles(entryPath, predicate);
+    }
+
+    return predicate(entryPath) ? [entryPath] : [];
+  });
+}
+
+function removeQueryAndHash(reference) {
+  return reference.split(/[?#]/, 1)[0];
+}
+
+function localTarget(sourceFile, reference) {
+  const cleanReference = decodeURIComponent(removeQueryAndHash(reference));
+  return path.resolve(path.dirname(sourceFile), cleanReference || ".");
+}
+
+function assertLocalReference(sourceFile, reference, label) {
+  const target = localTarget(sourceFile, reference);
+  const insideRoot = target === ROOT || target.startsWith(`${ROOT}${path.sep}`);
+  report(insideRoot, `${label} escapes the repository: ${reference}`);
+  report(insideRoot && fs.existsSync(target), `${label} does not resolve: ${reference}`);
+}
+
+const requiredFiles = [
+  ".nojekyll",
+  "404.html",
+  "CNAME",
+  "CONTRIBUTING.md",
+  "LICENSE",
+  "LICENSE-CONTENT",
+  "README.md",
+  "SECURITY.md",
+  "index.html",
+  "llms.txt",
+  "llms-full.txt",
+  "robots.txt",
+  "sitemap.xml",
+];
+
+for (const file of requiredFiles) {
+  report(fs.existsSync(path.join(ROOT, file)), `Required file is missing: ${file}`);
+}
+
+const htmlFiles = listFiles(ROOT, (file) => file.endsWith(".html"));
+
+for (const htmlFile of htmlFiles) {
+  const name = relativePath(htmlFile);
+  const html = fs.readFileSync(htmlFile, "utf8");
+  const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]);
+  const duplicateIds = ids.filter((id, index) => ids.indexOf(id) !== index);
+
+  report(/^<!doctype html>/i.test(html), `${name} needs an HTML doctype`);
+  report(/<html\s[^>]*lang="[^"]+"/i.test(html), `${name} needs a document language`);
+  report(/<title>[^<]+<\/title>/i.test(html), `${name} needs a non-empty title`);
+  report(duplicateIds.length === 0, `${name} contains duplicate IDs: ${duplicateIds.join(", ")}`);
+
+  for (const match of html.matchAll(/href="#([^"]+)"/g)) {
+    report(ids.includes(match[1]), `${name} links to missing fragment #${match[1]}`);
+  }
+
+  for (const match of html.matchAll(/(?:href|src)="([^"]+)"/g)) {
+    const reference = match[1];
+
+    if (/^(?:https?:|mailto:|tel:|data:|#)/i.test(reference)) {
+      continue;
+    }
+
+    assertLocalReference(htmlFile, reference, `${name} reference`);
+  }
+
+  for (const match of html.matchAll(/<(?:script|img)[^>]+src="([^"]+)"/g)) {
+    report(!/^https?:/i.test(match[1]), `${name} loads a remote runtime asset: ${match[1]}`);
+  }
+
+  for (const match of html.matchAll(/<link\b[^>]*>/g)) {
+    const tag = match[0];
+    const relation = tag.match(/\brel="([^"]+)"/i)?.[1] ?? "";
+    const reference = tag.match(/\bhref="([^"]+)"/i)?.[1] ?? "";
+
+    if (/\b(?:stylesheet|icon|preload|modulepreload)\b/i.test(relation)) {
+      report(!/^https?:/i.test(reference), `${name} loads a remote linked asset: ${reference}`);
+    }
+  }
+
+  for (const match of html.matchAll(/<input\b[^>]*\bid="([^"]+)"[^>]*>/g)) {
+    report(html.includes(`for="${match[1]}"`), `${name} input #${match[1]} has no explicit label`);
+  }
+}
+
+const indexHtml = fs.readFileSync(path.join(ROOT, "index.html"), "utf8");
+const metadataChecks = [
+  [/<meta\s+name="description"\s+content="[^"]+"/i, "meta description"],
+  [/<link\s+rel="canonical"\s+href="https:\/\/claudeholic\.me\/"/i, "canonical URL"],
+  [/<meta\s+property="og:image"\s+content="https:\/\/claudeholic\.me\/assets\/images\/og-preview\.png"/i, "Open Graph image"],
+  [/<meta\s+name="twitter:card"\s+content="summary_large_image"/i, "Twitter card"],
+  [/<script\s+type="application\/ld\+json">/i, "JSON-LD data"],
+  [/<link\s+rel="alternate"\s+type="text\/plain"\s+href="\.\/llms\.txt"/i, "llms.txt discovery link"],
+  [/<main\s+id="main-content">/i, "main landmark"],
+  [/aria-live="polite"/i, "polite status region"],
+];
+
+for (const [pattern, label] of metadataChecks) {
+  report(pattern.test(indexHtml), `index.html is missing ${label}`);
+}
+
+const jsonLdMatch = indexHtml.match(/<script\s+type="application\/ld\+json">([\s\S]*?)<\/script>/i);
+
+try {
+  JSON.parse(jsonLdMatch?.[1] ?? "");
+  report(true, "JSON-LD is valid JSON");
+} catch {
+  report(false, "index.html contains invalid JSON-LD");
+}
+
+const cssFiles = listFiles(path.join(ROOT, "assets", "css"), (file) => file.endsWith(".css"));
+
+for (const cssFile of cssFiles) {
+  const name = relativePath(cssFile);
+  const css = fs.readFileSync(cssFile, "utf8");
+  const withoutComments = css.replace(/\/\*[\s\S]*?\*\//g, "");
+  const openingBlocks = (withoutComments.match(/{/g) ?? []).length;
+  const closingBlocks = (withoutComments.match(/}/g) ?? []).length;
+
+  report(openingBlocks === closingBlocks, `${name} has unbalanced blocks`);
+  report(css.includes("prefers-reduced-motion: reduce"), `${name} needs reduced-motion handling`);
+
+  for (const match of css.matchAll(/url\(["']?([^"')]+)["']?\)/g)) {
+    if (!/^data:/i.test(match[1])) {
+      assertLocalReference(cssFile, match[1], `${name} asset`);
+    }
+  }
+}
+
+const jsFiles = listFiles(path.join(ROOT, "assets", "js"), (file) => file.endsWith(".js"));
+
+for (const jsFile of jsFiles) {
+  const name = relativePath(jsFile);
+  const source = fs.readFileSync(jsFile, "utf8");
+  const syntaxCheck = spawnSync(process.execPath, ["--check", jsFile], { encoding: "utf8" });
+
+  report(syntaxCheck.status === 0, `${name} does not parse: ${syntaxCheck.stderr.trim()}`);
+
+  for (const match of source.matchAll(/(?:import[^"']*from\s*|import\s*)["'](\.[^"']+)["']/g)) {
+    assertLocalReference(jsFile, match[1], `${name} import`);
+  }
+}
+
+const socialPreview = fs.readFileSync(path.join(ROOT, "assets", "images", "og-preview.png"));
+const pngSignature = socialPreview.subarray(0, 8).toString("hex");
+report(pngSignature === "89504e470d0a1a0a", "Social preview is not a valid PNG");
+report(socialPreview.readUInt32BE(16) === 1200, "Social preview must be 1200 pixels wide");
+report(socialPreview.readUInt32BE(20) === 630, "Social preview must be 630 pixels high");
+
+const cname = fs.readFileSync(path.join(ROOT, "CNAME"), "utf8").trim();
+const robots = fs.readFileSync(path.join(ROOT, "robots.txt"), "utf8");
+const sitemap = fs.readFileSync(path.join(ROOT, "sitemap.xml"), "utf8");
+const llms = fs.readFileSync(path.join(ROOT, "llms.txt"), "utf8");
+
+report(cname === "claudeholic.me", "CNAME must contain only claudeholic.me");
+report(robots.includes("Sitemap: https://claudeholic.me/sitemap.xml"), "robots.txt must advertise the canonical sitemap");
+report(sitemap.includes("<loc>https://claudeholic.me/</loc>"), "sitemap.xml must contain the canonical homepage");
+report(llms.startsWith("# claudeholic.me"), "llms.txt must start with the site name");
+report(llms.includes("https://claudeholic.me/llms-full.txt"), "llms.txt must link to full model context");
+
+if (failures.length > 0) {
+  console.error(`\nStatic review failed with ${failures.length} finding(s):`);
+  failures.forEach((failure) => console.error(`  - ${failure}`));
+  process.exit(1);
+}
+
+console.log(`Static review passed: ${assertionCount} checks across ${htmlFiles.length} HTML pages, ${cssFiles.length} stylesheet, and ${jsFiles.length} modules.`);
