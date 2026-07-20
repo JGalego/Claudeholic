@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f3efe6">
+    <meta name="description" content="A practical inventory and least-privilege advisory for AI tool and MCP server access.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Your tools can access more than your memory can.">
+    <meta property="og:description" content="An MCP accumulation advisory from the fictional Department of Prompt Health.">
+    <meta property="og:url" content="https://claudeholic.me/bulletins/mcp-accumulation-advisory.html">
+    <meta property="og:image" content="https://claudeholic.me/assets/images/og-preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="claudeholic.me case file: one question, several hours">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://claudeholic.me/assets/images/og-preview.png">
+    <meta name="twitter:image:alt" content="claudeholic.me case file: one question, several hours">
+    <link rel="canonical" href="https://claudeholic.me/bulletins/mcp-accumulation-advisory.html">
+    <link rel="alternate" type="application/rss+xml" href="../feed.xml" title="Department Bulletins">
+    <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../assets/css/site.css">
+    <title>MCP Accumulation Advisory — claudeholic.me</title>
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"Article","headline":"Your tools can access more than your memory can.","datePublished":"2026-06-12","author":{"@type":"Organization","name":"Department of Prompt Health"},"mainEntityOfPage":"https://claudeholic.me/bulletins/mcp-accumulation-advisory.html"}
+    </script>
+  </head>
+  <body class="publication-page">
+    <a class="skip-link" href="#article">Skip to the notice</a>
+    <header class="bulletin-article-header">
+      <nav class="publication-nav" aria-label="Bulletin navigation"><a class="wordmark" href="../">claudeholic.me</a><ul><li><a href="../">Intervention</a></li><li><a href="./">Bulletins</a></li><li><a href="../feed.xml">RSS</a></li></ul></nav>
+      <div class="bulletin-article-hero">
+        <p class="article-kicker">MCP Accumulation Advisory · DPH-MCP-17</p>
+        <h1>Your tools can access more than your memory can.</h1>
+        <p class="article-deck">An inventory procedure for permissions acquired during moments of enthusiasm.</p>
+        <p class="article-byline"><time datetime="2026-06-12">Filed 12 June 2026</time><span>Applies to: agents with keys to things</span></p>
+      </div>
+    </header>
+
+    <main class="bulletin-article-layout" id="article">
+      <article class="bulletin-body">
+        <p>
+          Tool connections turn a model from a conversational surface into an
+          actor. That can be useful. It also means every forgotten server,
+          inherited token, and broad filesystem grant remains a real capability
+          after the setup tutorial has faded from memory.
+        </p>
+
+        <h2>Inventory before optimization.</h2>
+        <p>
+          List every connected server and tool. For each one, record what it can
+          read, what it can change, where its credentials live, and whether it
+          is still used. If ownership or purpose is unclear, disable it while
+          you investigate.
+        </p>
+
+        <div class="bulletin-table-wrap">
+          <table>
+            <caption>Minimum tool inventory</caption>
+            <thead><tr><th scope="col">Question</th><th scope="col">Good answer</th><th scope="col">Warning sign</th></tr></thead>
+            <tbody>
+              <tr><td>What can it read?</td><td>Named folders, APIs, or records</td><td>“Probably the workspace”</td></tr>
+              <tr><td>What can it change?</td><td>Explicit operations with confirmation</td><td>Shell access inherited from setup</td></tr>
+              <tr><td>Which identity does it use?</td><td>Dedicated, scoped credentials</td><td>Your personal all-purpose token</td></tr>
+              <tr><td>Who maintains it?</td><td>Known source and update path</td><td>A gist from a launch thread</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Prefer the least interesting permission.</h2>
+        <p>
+          Grant read access before write access, a project folder before a home
+          directory, and a dedicated account before a personal one. Require
+          confirmation for destructive, external, or costly actions. Isolation
+          is not distrust. It is how useful systems remain useful after mistakes.
+        </p>
+
+        <blockquote><p>Convenience is not consent that lasts forever.</p></blockquote>
+
+        <h2>Run a monthly subtraction.</h2>
+        <ol>
+          <li>Revoke credentials for tools you no longer use.</li>
+          <li>Rotate long-lived secrets and remove them from logs or prompt archives.</li>
+          <li>Review recent tool activity for actions you did not expect.</li>
+          <li>Update maintained servers; remove abandoned ones.</li>
+          <li>Test that confirmation boundaries still stop the action they describe.</li>
+        </ol>
+
+        <h2>Keep a manual path.</h2>
+        <p>
+          Know how to complete critical work without the agent. Manual access is
+          both a recovery mechanism and a way to understand what the automation
+          is doing on your behalf.
+        </p>
+      </article>
+
+      <aside class="bulletin-sidebar" aria-labelledby="file-details">
+        <h2 id="file-details">Advisory status</h2>
+        <dl>
+          <div><dt>Risk</dt><dd>Permission drift</dd></div>
+          <div><dt>First action</dt><dd>List every connection</dd></div>
+          <div><dt>Default posture</dt><dd>Least privilege</dd></div>
+          <div><dt>Review interval</dt><dd>Monthly or after enthusiasm</dd></div>
+        </dl>
+        <p>The Department framing is fictional. The least-privilege guidance is sincere and makes no claim about any specific MCP server or vendor.</p>
+      </aside>
+    </main>
+
+    <footer class="publication-footer"><p>Advisory complete. One forgotten token is already feeling nervous.</p><nav aria-label="Footer navigation"><a href="./">All bulletins</a><a href="../">Home</a><a href="../feed.xml">RSS</a></nav></footer>
+  </body>
+</html>

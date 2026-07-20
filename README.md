@@ -23,6 +23,8 @@ verification, learning, breaks, hobbies, and asking humans is entirely sincere.
   deleting every useful tool.
 - **Balance manifesto:** A sincere case for craft, skepticism, and learning by
   doing.
+- **Department Bulletins:** Occasional practical notices with an RSS feed and
+  no obligation to feed a content calendar.
 - **Department records:** Local achievements, fictional institutions, and more
   paperwork than the premise strictly requires.
 - **Restricted terminal:** There is no restricted terminal.
@@ -72,6 +74,8 @@ No installation step is required. This is deliberate.
 ├── 404.html                   # Missing-context recovery
 ├── llms.txt                   # Concise model-facing index
 ├── llms-full.txt              # Expanded model-facing context
+├── feed.xml                   # RSS 2.0 Department Bulletins feed
+├── bulletins/                 # Static archive and long-form notices
 ├── assets/
 │   ├── css/site.css           # Editorial document system
 │   ├── fonts/                 # Self-hosted WOFF2 files and OFL notices
@@ -79,6 +83,7 @@ No installation step is required. This is deliberate.
 │   └── js/                    # Independent enhancement modules
 ├── docs/
 │   ├── creative-brief.md      # Approved intent
+│   ├── bulletins.md           # Manual publishing checklist
 │   ├── lore-bible.md          # Fictional bureaucracy, kept consistent
 │   └── accessibility.md       # Non-fictional quality bar
 ├── scripts/check-site.mjs     # Dependency-free static validation

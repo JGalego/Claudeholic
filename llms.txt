@@ -12,6 +12,8 @@ The human-readable website is the canonical source. This file exists to make the
 - [Full text context](https://claudeholic.me/llms-full.txt): Expanded plain-text reference containing the site's core copy, lore, safety position, and content map.
 - [Source repository](https://github.com/JGalego/Claudeholic): Static source, documentation, deployment workflow, and project history.
 - [Creative brief](https://claudeholic.me/docs/creative-brief.md): Approved editorial, visual, technical, and accessibility direction.
+- [Department Bulletins](https://claudeholic.me/bulletins/): Occasional practical notices about context hygiene, model releases, and tool permissions.
+- [RSS feed](https://claudeholic.me/feed.xml): Machine-readable updates for Department Bulletins.
 
 ## Major sections
 
@@ -19,6 +21,7 @@ The human-readable website is the canonical source. This file exists to make the
 - [Stages of Claudeholism](https://claudeholic.me/#stages): A fictional progression from healthy curiosity to recreational release-note reading.
 - [Recovery program](https://claudeholic.me/#recovery): Practical advice about breaks, primary sources, privacy, verification, learning, human collaboration, and offline hobbies.
 - [Balance manifesto](https://claudeholic.me/#manifesto): A sincere argument for using AI to expand human agency rather than replace it.
+- [Department Bulletins](https://claudeholic.me/#bulletins): Occasional editorial guidance that remains useful after the joke.
 - [Disclaimer and privacy](https://claudeholic.me/#disclaimer): Non-affiliation, non-medical framing, and a no-analytics privacy statement.
 
 ## Important interpretation notes

@@ -59,6 +59,7 @@ const requiredFiles = [
   "README.md",
   "SECURITY.md",
   "index.html",
+  "feed.xml",
   "llms.txt",
   "llms-full.txt",
   "robots.txt",
@@ -183,12 +184,39 @@ const cname = fs.readFileSync(path.join(ROOT, "CNAME"), "utf8").trim();
 const robots = fs.readFileSync(path.join(ROOT, "robots.txt"), "utf8");
 const sitemap = fs.readFileSync(path.join(ROOT, "sitemap.xml"), "utf8");
 const llms = fs.readFileSync(path.join(ROOT, "llms.txt"), "utf8");
+const feed = fs.readFileSync(path.join(ROOT, "feed.xml"), "utf8");
+const bulletinDirectory = path.join(ROOT, "bulletins");
+const bulletinFiles = fs.readdirSync(bulletinDirectory)
+  .filter((file) => file.endsWith(".html") && file !== "index.html")
+  .sort();
+const bulletinUrls = bulletinFiles.map((file) => `https://claudeholic.me/bulletins/${file}`);
+const bulletinArchive = fs.readFileSync(path.join(bulletinDirectory, "index.html"), "utf8");
 
 report(cname === "claudeholic.me", "CNAME must contain only claudeholic.me");
 report(robots.includes("Sitemap: https://claudeholic.me/sitemap.xml"), "robots.txt must advertise the canonical sitemap");
 report(sitemap.includes("<loc>https://claudeholic.me/</loc>"), "sitemap.xml must contain the canonical homepage");
 report(llms.startsWith("# claudeholic.me"), "llms.txt must start with the site name");
 report(llms.includes("https://claudeholic.me/llms-full.txt"), "llms.txt must link to full model context");
+report(feed.startsWith("<?xml version=\"1.0\" encoding=\"UTF-8\"?>"), "feed.xml must declare UTF-8 XML");
+report(feed.trim().endsWith("</rss>"), "feed.xml must close its RSS document");
+report(feed.includes("<rss version=\"2.0\""), "feed.xml must declare RSS 2.0");
+report(feed.includes("https://claudeholic.me/bulletins/"), "feed.xml must link to the bulletin archive");
+report((feed.match(/<item>/g) ?? []).length === bulletinFiles.length, "feed.xml must contain exactly one item per filed bulletin");
+report(sitemap.startsWith("<?xml version=\"1.0\" encoding=\"UTF-8\"?>"), "sitemap.xml must declare UTF-8 XML");
+report(sitemap.trim().endsWith("</urlset>"), "sitemap.xml must close its URL set");
+
+for (const [index, bulletinFile] of bulletinFiles.entries()) {
+  const bulletinUrl = bulletinUrls[index];
+  const bulletinHtml = fs.readFileSync(path.join(bulletinDirectory, bulletinFile), "utf8");
+
+  report(bulletinHtml.includes(`<link rel="canonical" href="${bulletinUrl}">`), `${bulletinFile} must declare its canonical URL`);
+  report(bulletinHtml.includes("The Department framing is fictional") || bulletinHtml.includes("The census is satire"), `${bulletinFile} must distinguish fiction from guidance`);
+  report(bulletinArchive.includes(`./${bulletinFile}`), `Bulletin archive must link to ${bulletinFile}`);
+  report(indexHtml.includes(`./bulletins/${bulletinFile}`), `Homepage register must link to ${bulletinFile}`);
+  report(feed.includes(`<link>${bulletinUrl}</link>`), `RSS feed must link to ${bulletinFile}`);
+  report(feed.includes(`<guid isPermaLink="true">${bulletinUrl}</guid>`), `RSS feed must use ${bulletinFile} as its permalink GUID`);
+  report(sitemap.includes(`<loc>${bulletinUrl}</loc>`), `Sitemap must contain ${bulletinFile}`);
+}
 
 if (failures.length > 0) {
   console.error(`\nStatic review failed with ${failures.length} finding(s):`);

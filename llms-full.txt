@@ -137,6 +137,26 @@ The final principle is:
 
 “The goal is not less wonder. It is more intention.”
 
+## Department Bulletins
+
+Department Bulletins are occasional standalone notices that extend the site's
+practical guidance without turning the homepage into a content feed. They are
+available at https://claudeholic.me/bulletins/ and through the RSS 2.0 feed at
+https://claudeholic.me/feed.xml.
+
+The initial notices are:
+
+1. The 2026 Context Window Census: larger context windows do not remove the need
+	to select relevant evidence, remove sensitive material, and restate the task.
+2. The Model Release Coping Protocol: evaluate new models against representative
+	work, retain a rollback path, review privacy boundaries, and migrate only
+	where capability produces a meaningful improvement.
+3. The MCP Accumulation Advisory: inventory tool access, prefer least privilege,
+	revoke unused credentials, review activity, and preserve a manual path.
+
+The fictional administrative framing remains satire. Guidance about privacy,
+verification, evaluation, permissions, and human judgment is sincere.
+
 ## Hidden lore
 
 The Department of Prompt Health is the fictional publisher. Its Bureau of Context Hygiene administers the Prompt Withdrawal Index using the unreviewed DSM-AI. The International Claudeholics Association is an independent fictional peer group. Certified Context Window Inspectors issue case numbers. The Ministry of Token Conservation appears only in deeper records.

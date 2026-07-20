@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Department Bulletins — claudeholic.me</title>
+    <link>https://claudeholic.me/bulletins/</link>
+    <description>Occasional satirical and practical notices for healthier generative AI use.</description>
+    <language>en</language>
+    <lastBuildDate>Mon, 20 Jul 2026 12:00:00 GMT</lastBuildDate>
+    <atom:link href="https://claudeholic.me/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The window grew. So did the preamble.</title>
+      <link>https://claudeholic.me/bulletins/2026-context-window-census.html</link>
+      <guid isPermaLink="true">https://claudeholic.me/bulletins/2026-context-window-census.html</guid>
+      <pubDate>Mon, 20 Jul 2026 12:00:00 GMT</pubDate>
+      <description>The 2026 Context Window Census and practical guidance for selecting relevant, private, verifiable context.</description>
+    </item>
+    <item>
+      <title>A new model shipped. Your old work remains valid.</title>
+      <link>https://claudeholic.me/bulletins/model-release-coping-protocol.html</link>
+      <guid isPermaLink="true">https://claudeholic.me/bulletins/model-release-coping-protocol.html</guid>
+      <pubDate>Fri, 26 Jun 2026 12:00:00 GMT</pubDate>
+      <description>A five-step protocol for evaluating a model release against your own tasks, boundaries, and rollback plan.</description>
+    </item>
+    <item>
+      <title>Your tools can access more than your memory can.</title>
+      <link>https://claudeholic.me/bulletins/mcp-accumulation-advisory.html</link>
+      <guid isPermaLink="true">https://claudeholic.me/bulletins/mcp-accumulation-advisory.html</guid>
+      <pubDate>Fri, 12 Jun 2026 12:00:00 GMT</pubDate>
+      <description>An inventory and least-privilege advisory for AI tools, credentials, and MCP server access.</description>
+    </item>
+  </channel>
+</rss>
