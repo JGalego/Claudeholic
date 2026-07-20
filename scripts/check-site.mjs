@@ -191,6 +191,27 @@ const bulletinFiles = fs.readdirSync(bulletinDirectory)
   .sort();
 const bulletinUrls = bulletinFiles.map((file) => `https://claudeholic.me/bulletins/${file}`);
 const bulletinArchive = fs.readFileSync(path.join(bulletinDirectory, "index.html"), "utf8");
+const fieldNotes = JSON.parse(fs.readFileSync(path.join(ROOT, "data", "field-notes.json"), "utf8"));
+const fieldNotesHtml = fs.readFileSync(path.join(ROOT, "field-notes", "index.html"), "utf8");
+const allowedFieldNoteKeys = ["category", "counterpart", "id", "observation", "origin"];
+const allowedFieldNoteCategories = new Set([
+  "creative-independence",
+  "human-collaboration",
+  "learning",
+  "privacy-and-permissions",
+  "time-and-attention",
+  "tool-accumulation",
+  "verification",
+]);
+
+function escapeHtmlText(value) {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
 
 report(cname === "claudeholic.me", "CNAME must contain only claudeholic.me");
 report(robots.includes("Sitemap: https://claudeholic.me/sitemap.xml"), "robots.txt must advertise the canonical sitemap");
@@ -216,6 +237,40 @@ for (const [index, bulletinFile] of bulletinFiles.entries()) {
   report(feed.includes(`<link>${bulletinUrl}</link>`), `RSS feed must link to ${bulletinFile}`);
   report(feed.includes(`<guid isPermaLink="true">${bulletinUrl}</guid>`), `RSS feed must use ${bulletinFile} as its permalink GUID`);
   report(sitemap.includes(`<loc>${bulletinUrl}</loc>`), `Sitemap must contain ${bulletinFile}`);
+}
+
+report(fieldNotes.schemaVersion === 1, "Field-note data must use schema version 1");
+report(fieldNotes.license === "CC-BY-4.0", "Field-note data must declare the content license");
+report(Array.isArray(fieldNotes.notes) && fieldNotes.notes.length > 0, "Field-note data must contain approved observations");
+report(sitemap.includes("<loc>https://claudeholic.me/field-notes/</loc>"), "Sitemap must contain the field-note ledger");
+report(llms.includes("https://claudeholic.me/field-notes/"), "llms.txt must link to the field-note ledger");
+
+const fieldNoteIds = new Set();
+const publishedFieldNoteIds = [...fieldNotesHtml.matchAll(/data-field-note-id="([^"]+)"/g)].map((match) => match[1]);
+
+report(publishedFieldNoteIds.length === fieldNotes.notes.length, "Field-note HTML must contain exactly one record per JSON note");
+
+for (const note of fieldNotes.notes) {
+  const noteKeys = Object.keys(note).sort();
+  report(JSON.stringify(noteKeys) === JSON.stringify(allowedFieldNoteKeys), `${note.id || "Unknown field note"} must contain only the approved privacy-safe fields`);
+  report(allowedFieldNoteKeys.every((key) => typeof note[key] === "string" && note[key].trim().length > 0), `${note.id || "Unknown field note"} fields must be non-empty strings`);
+  report(/^DPH-FN-\d{3}$/.test(note.id), `Invalid field-note ID: ${note.id}`);
+  report(!fieldNoteIds.has(note.id), `Duplicate field-note ID: ${note.id}`);
+  fieldNoteIds.add(note.id);
+  report(allowedFieldNoteCategories.has(note.category), `${note.id} has an invalid category`);
+  report(note.origin === "department-seed" || note.origin === "community-anonymous", `${note.id} has an invalid origin`);
+  report(!/[\n\r]/.test(note.observation), `${note.id} observation must be one compact record`);
+  const itemPattern = new RegExp(`<li\\s+data-field-note-id="${note.id}"\\s+data-field-note-category="([^"]+)">([\\s\\S]*?)<\\/li>`);
+  const itemMatch = fieldNotesHtml.match(itemPattern);
+  const itemHtml = itemMatch?.[2] ?? "";
+  report(Boolean(itemMatch), `Field-note page must contain a structured record for ${note.id}`);
+  report(itemMatch?.[1] === note.category, `Field-note page category must match ${note.id}`);
+  report(itemHtml.includes(`“${escapeHtmlText(note.observation)}”`), `Field-note page observation must safely match ${note.id}`);
+  report(itemHtml.includes(escapeHtmlText(note.counterpart)), `Field-note page counterpart must safely match ${note.id}`);
+}
+
+for (const publishedId of publishedFieldNoteIds) {
+  report(fieldNoteIds.has(publishedId), `Field-note HTML contains stale record ${publishedId}`);
 }
 
 if (failures.length > 0) {

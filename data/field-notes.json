@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "updated": "2026-07-20",
+  "license": "CC-BY-4.0",
+  "notes": [
+    {
+      "id": "DPH-FN-001",
+      "category": "verification",
+      "observation": "I requested a second opinion from the same model in a new tab.",
+      "counterpart": "Change the evidence or reviewer, not only the conversation window.",
+      "origin": "department-seed"
+    },
+    {
+      "id": "DPH-FN-002",
+      "category": "time-and-attention",
+      "observation": "I polished the prompt after the answer was already useful.",
+      "counterpart": "Define done before refinement becomes the task.",
+      "origin": "department-seed"
+    },
+    {
+      "id": "DPH-FN-003",
+      "category": "learning",
+      "observation": "I called the version I wrote myself ‘the baseline.’",
+      "counterpart": "Keep manual practice as a skill, not merely a benchmark fixture.",
+      "origin": "department-seed"
+    },
+    {
+      "id": "DPH-FN-004",
+      "category": "human-collaboration",
+      "observation": "I asked an assistant what my teammate probably meant instead of asking my teammate.",
+      "counterpart": "Use the channel that can clarify intent directly.",
+      "origin": "department-seed"
+    }
+  ]
+}

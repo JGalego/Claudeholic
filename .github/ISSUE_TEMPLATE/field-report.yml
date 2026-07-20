@@ -1,0 +1,65 @@
+name: Public field-note candidate
+description: File a public, account-linked observation for anonymized ledger review.
+title: "field report: "
+labels:
+  - content
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This creates a public GitHub issue linked to your GitHub account. The later static ledger omits contributor identity; this intake does not. This is an editorial form, not a wellbeing survey. Do not disclose personal distress, health information, private conversations, employer incidents, names, credentials, or confidential material. Maintainers will close submissions that cross these boundaries and may request repository administrators remove sensitive content, but you must not rely on later redaction.
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Observation category
+      options:
+        - Verification and trust
+        - Privacy and permissions
+        - Learning and fundamentals
+        - Time and attention
+        - Human collaboration
+        - Creative independence
+        - Tool accumulation
+    validations:
+      required: true
+
+  - type: textarea
+    id: pattern
+    attributes:
+      label: Observed pattern
+      description: Describe one generalized behavior in no more than three sentences. Do not tell a personal health or workplace story.
+      placeholder: People sometimes request repeated rewrites after the original requirement has already been met.
+    validations:
+      required: true
+
+  - type: textarea
+    id: lesson
+    attributes:
+      label: Practical lesson
+      description: State the useful takeaway that should remain after the satire is removed.
+      placeholder: Define a stopping condition before beginning the session.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-display
+    attributes:
+      label: Optional ledger wording
+      description: A short line the Department could publish without your account identity. Maintainers may rewrite or decline it.
+
+  - type: checkboxes
+    id: boundaries
+    attributes:
+      label: Publication boundaries
+      options:
+        - label: This contains no personal wellbeing, medical, employment, or identifying information.
+          required: true
+        - label: This contains no secrets, private prompts, confidential output, or security incident details.
+          required: true
+        - label: I understand this issue is public and linked to my GitHub account, while the separate static ledger omits contributor identity.
+          required: true
+        - label: I agree that accepted original wording may be edited and published in that ledger under CC BY 4.0 without account attribution.
+          required: true
+        - label: I understand that submission does not guarantee publication.
+          required: true

@@ -14,6 +14,7 @@ The human-readable website is the canonical source. This file exists to make the
 - [Creative brief](https://claudeholic.me/docs/creative-brief.md): Approved editorial, visual, technical, and accessibility direction.
 - [Department Bulletins](https://claudeholic.me/bulletins/): Occasional practical notices about context hygiene, model releases, and tool permissions.
 - [RSS feed](https://claudeholic.me/feed.xml): Machine-readable updates for Department Bulletins.
+- [Approved field notes](https://claudeholic.me/field-notes/): A static ledger of generalized AI-use patterns and useful counterparts, with no personal wellbeing data.
 
 ## Major sections
 

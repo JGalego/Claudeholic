@@ -157,6 +157,21 @@ The initial notices are:
 The fictional administrative framing remains satire. Guidance about privacy,
 verification, evaluation, permissions, and human judgment is sincere.
 
+## Approved field notes and community intake
+
+The approved field-note ledger at https://claudeholic.me/field-notes/ contains
+generalized AI-use patterns paired with practical counterparts. Published JSON
+records contain only a Department ID, category, observation, counterpart, and a
+non-identifying origin classification. They do not contain contributor account
+names, employers, demographics, locations, personal stories, or submission
+narratives.
+
+Community intake occurs through public GitHub issues linked to submitters'
+GitHub accounts. The intake itself is not anonymous. If a candidate is accepted,
+the separately published static ledger omits the account identity. Submitters
+are instructed not to include personal wellbeing, medical, employment,
+identifying, confidential, credential, or private-prompt information.
+
 ## Hidden lore
 
 The Department of Prompt Health is the fictional publisher. Its Bureau of Context Hygiene administers the Prompt Withdrawal Index using the unreviewed DSM-AI. The International Claudeholics Association is an independent fictional peer group. Certified Context Window Inspectors issue case numbers. The Ministry of Token Conservation appears only in deeper records.

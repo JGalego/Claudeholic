@@ -15,6 +15,19 @@ more quietly funny. Ideally all three.
 For security-sensitive reports, do not publish secrets or personal data in an
 issue. This is also the site's general advice about prompts.
 
+## Choose the narrowest intake form
+
+- Propose one checklist behavior with the **Symptom candidate** form.
+- File one generalized, non-personal pattern with **Public field-note candidate**.
+- Coordinate localized copy with **Translation proposal**.
+- Use **Incident report** for reproducible defects.
+- Use a private security advisory for sensitive vulnerabilities.
+
+Read [the community intake policy](docs/community.md) before proposing public
+field notes. The project does not collect personal wellbeing stories, private
+prompts, or employer incidents into its ledger. Candidate issues are public and
+account-linked, so never include identifying or sensitive information there.
+
 ## Local review
 
 The project has no install step and no production build.

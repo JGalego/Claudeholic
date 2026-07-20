@@ -1,0 +1,68 @@
+name: Translation proposal
+description: Propose and maintain a human-reviewed site translation.
+title: "i18n: "
+labels:
+  - translation
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Translation here includes tone, accessibility, and cultural judgment. Machine assistance is welcome; a fluent human reviewer is required.
+
+  - type: input
+    id: locale
+    attributes:
+      label: Language and locale
+      placeholder: Portuguese (Portugal), pt-PT
+    validations:
+      required: true
+
+  - type: dropdown
+    id: fluency
+    attributes:
+      label: Reviewer relationship to the language
+      options:
+        - Native or heritage speaker
+        - Professionally fluent
+        - Advanced fluent speaker with a native reviewer
+        - Coordinating multiple fluent reviewers
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Proposed scope
+      description: Identify the pages and whether you can maintain the translation when source copy changes.
+    validations:
+      required: true
+
+  - type: textarea
+    id: sample
+    attributes:
+      label: Tone sample
+      description: Translate the hero line and one symptom, then explain one cultural or tonal choice.
+    validations:
+      required: true
+
+  - type: textarea
+    id: accessibility
+    attributes:
+      label: Accessibility considerations
+      description: Note text expansion, abbreviations, screen-reader pronunciation, directionality, or typography needs.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Translation checks
+      options:
+        - label: A fluent human will review every published string.
+          required: true
+        - label: I can preserve the non-medical disclaimer and self-directed tone.
+          required: true
+        - label: I agree that accepted translation text is published under CC BY 4.0.
+          required: true
+        - label: I will not translate official Anthropic branding or imply endorsement.
+          required: true

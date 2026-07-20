@@ -1,5 +1,8 @@
 blank_issues_enabled: false
 contact_links:
+  - name: Approved field notes
+    url: https://claudeholic.me/field-notes/
+    about: Read the static public ledger and its publication boundaries before filing an observation.
   - name: Private security report
     url: https://github.com/JGalego/Claudeholic/security/advisories/new
     about: Report vulnerabilities without publishing exploit details or private data.

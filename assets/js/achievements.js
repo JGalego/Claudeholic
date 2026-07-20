@@ -30,7 +30,7 @@ const CATALOG = {
     linkLabel: "Review inherited technical obligations",
   },
   "terminal-mode": {
-    title: "Terminally online",
+    title: "Found the interface beneath the interface",
     description: "Found the interface beneath the interface. This will not help your assessment.",
   },
 };

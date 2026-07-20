@@ -1,0 +1,63 @@
+name: Symptom candidate
+description: Propose one recognizable AI-use habit for editorial review.
+title: "symptom: "
+labels:
+  - content
+body:
+  - type: markdown
+    attributes:
+      value: |
+        File one behavior, not a diagnosis or personal wellbeing story. Do not include private prompts, employer details, names, health information, or secrets. Accepted copy may be edited and published under CC BY 4.0.
+
+  - type: textarea
+    id: observation
+    attributes:
+      label: One observable habit
+      description: Write one concise first-person statement in the site's checklist voice. Describe tool use, not a person’s character or health.
+      placeholder: I ask a second model to review the answer from the first model, then forget which one I trusted.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: progression
+    attributes:
+      label: Where does it belong in the escalation?
+      options:
+        - Early and plausible
+        - Familiar but concerning
+        - Elaborate workflow behavior
+        - Recreational release-note territory
+        - Field-note gallery only, not the scored assessment
+    validations:
+      required: true
+
+  - type: textarea
+    id: recognition
+    attributes:
+      label: Why is it recognizable?
+      description: Explain the shared behavior in two or three sentences. Keep this about patterns, not named people or workplaces.
+    validations:
+      required: true
+
+  - type: textarea
+    id: useful-counterpart
+    attributes:
+      label: Useful counterpart
+      description: What quiet, practical habit could sit beside the joke?
+      placeholder: Compare claims against a primary source before opening another model.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: boundaries
+    attributes:
+      label: Filing boundaries
+      options:
+        - label: This describes an AI-use behavior, not addiction, mental health, disability, or personal distress.
+          required: true
+        - label: I removed names, private prompts, employer details, health information, and secrets.
+          required: true
+        - label: I agree that accepted original wording may be edited and published under CC BY 4.0.
+          required: true
+        - label: The joke is self-directed and does not mock another person or group.
+          required: true

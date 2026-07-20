@@ -25,6 +25,8 @@ verification, learning, breaks, hobbies, and asking humans is entirely sincere.
   doing.
 - **Department Bulletins:** Occasional practical notices with an RSS feed and
   no obligation to feed a content calendar.
+- **Approved field notes:** A static, privacy-constrained ledger of recognizable
+  tool-use patterns and practical counterparts.
 - **Department records:** Local achievements, fictional institutions, and more
   paperwork than the premise strictly requires.
 - **Restricted terminal:** There is no restricted terminal.
@@ -76,6 +78,8 @@ No installation step is required. This is deliberate.
 ├── llms-full.txt              # Expanded model-facing context
 ├── feed.xml                   # RSS 2.0 Department Bulletins feed
 ├── bulletins/                 # Static archive and long-form notices
+├── field-notes/               # Approved public observation ledger
+├── data/field-notes.json      # Structured, non-personal ledger source
 ├── assets/
 │   ├── css/site.css           # Editorial document system
 │   ├── fonts/                 # Self-hosted WOFF2 files and OFL notices
@@ -84,6 +88,7 @@ No installation step is required. This is deliberate.
 ├── docs/
 │   ├── creative-brief.md      # Approved intent
 │   ├── bulletins.md           # Manual publishing checklist
+│   ├── community.md           # Intake and privacy boundaries
 │   ├── lore-bible.md          # Fictional bureaucracy, kept consistent
 │   └── accessibility.md       # Non-fictional quality bar
 ├── scripts/check-site.mjs     # Dependency-free static validation
