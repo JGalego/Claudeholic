@@ -29,6 +29,10 @@ const CATALOG = {
     url: "https://github.com/JGalego/tech-debt",
     linkLabel: "Review inherited technical obligations",
   },
+  "terminal-mode": {
+    title: "Terminally online",
+    description: "Found the interface beneath the interface. This will not help your assessment.",
+  },
 };
 
 function readJson(storage, key, fallback) {

@@ -86,6 +86,18 @@ body::before {
   content: "";
 }
 
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  border: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  white-space: nowrap !important;
+}
+
 ::selection {
   color: var(--carbon);
   background: var(--administrative);
@@ -1036,6 +1048,169 @@ main > section > header > p:last-child {
   font-size: 0.68rem;
 }
 
+/* The Ministry insists this is an overlay, not another open tab. */
+.terminal-dialog {
+  width: min(64rem, calc(100% - 2rem));
+  height: min(44rem, calc(100% - 2rem));
+  max-width: none;
+  max-height: none;
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--signal);
+  border-radius: 0;
+  color: var(--paper-light);
+  background: var(--carbon);
+  box-shadow: 0.75rem 0.75rem 0 var(--alert);
+}
+
+.terminal-dialog[open] {
+  display: block;
+  animation: terminal-enter 180ms ease-out both;
+}
+
+.terminal-dialog::backdrop {
+  background: rgba(23, 23, 20, 0.88);
+}
+
+body:has(.terminal-dialog[open]) {
+  overflow: hidden;
+}
+
+.terminal-window {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  font-family: var(--font-mono);
+}
+
+.terminal-header {
+  display: flex;
+  min-height: 4rem;
+  padding-left: 1.25rem;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--rule-dark);
+  gap: 1rem;
+}
+
+.terminal-header p,
+.terminal-header h2 {
+  display: inline;
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1.4;
+}
+
+.terminal-header p {
+  margin-right: 1rem;
+  color: var(--signal);
+  text-transform: uppercase;
+}
+
+.terminal-close {
+  width: 4rem;
+  min-height: 4rem;
+  padding: 0;
+  border: 0;
+  border-left: 1px solid var(--rule-dark);
+  border-radius: 0;
+  color: var(--paper-light);
+  background: transparent;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.terminal-close:hover {
+  color: var(--carbon);
+  background: var(--signal);
+}
+
+.terminal-log {
+  flex: 1;
+  padding: 1.5rem;
+  background-image: repeating-linear-gradient(0deg, transparent 0, transparent 1.65rem, rgba(184, 217, 106, 0.035) calc(1.65rem + 1px));
+  overflow-y: auto;
+  scrollbar-color: var(--rule-dark) var(--carbon);
+}
+
+.terminal-line {
+  min-height: 1.65rem;
+  margin: 0;
+  color: #c7c0b4;
+  font-size: 0.76rem;
+  line-height: 1.65;
+  white-space: pre-wrap;
+}
+
+.terminal-line[data-kind="system"] {
+  color: var(--signal);
+}
+
+.terminal-line[data-kind="command"] {
+  color: var(--paper-light);
+}
+
+.terminal-line[data-kind="error"] {
+  color: #e58c78;
+}
+
+.terminal-line a {
+  color: var(--administrative);
+}
+
+.typing-cursor::after {
+  display: inline-block;
+  width: 0.6em;
+  height: 1em;
+  margin-left: 0.35em;
+  vertical-align: -0.15em;
+  background: var(--signal);
+  animation: cursor-blink 900ms steps(1, end) infinite;
+  content: "";
+}
+
+.terminal-form {
+  display: grid;
+  min-height: 4.25rem;
+  padding: 0 1.5rem;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.75rem;
+  border-top: 1px solid var(--rule-dark);
+}
+
+.terminal-form label {
+  color: var(--signal);
+  font-size: 0.72rem;
+}
+
+.terminal-form input {
+  width: 100%;
+  min-width: 0;
+  padding: 0.75rem 0;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  color: var(--paper-light);
+  background: transparent;
+  caret-color: var(--signal);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+.terminal-form:focus-within {
+  box-shadow: inset 3px 0 0 var(--signal);
+}
+
+.terminal-hint {
+  margin: 0;
+  padding: 0.65rem 1.5rem;
+  border-top: 1px solid var(--rule-dark);
+  color: var(--rule);
+  font-size: 0.62rem;
+}
+
 .records-grid ol {
   counter-reset: footnote;
 }
@@ -1148,6 +1323,30 @@ body:has(.site-footer)::after {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes terminal-enter {
+  from {
+    opacity: 0;
+    transform: translateY(1rem) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes cursor-blink {
+  0%,
+  48% {
+    opacity: 1;
+  }
+
+  49%,
+  100% {
+    opacity: 0;
   }
 }
 
@@ -1382,6 +1581,41 @@ body:has(.site-footer)::after {
 
   .panic-loader {
     padding: 2rem 1.25rem;
+  }
+
+  .terminal-dialog {
+    width: calc(100% - 1rem);
+    height: calc(100% - 1rem);
+    box-shadow: 0.35rem 0.35rem 0 var(--alert);
+  }
+
+  .terminal-header {
+    padding-left: 0.85rem;
+  }
+
+  .terminal-header p {
+    display: none;
+  }
+
+  .terminal-log {
+    padding: 1rem;
+  }
+
+  .terminal-form {
+    padding: 0 1rem;
+  }
+
+  .terminal-form label span[aria-hidden="true"] {
+    font-size: 0;
+  }
+
+  .terminal-form label span[aria-hidden="true"]::after {
+    font-size: 0.72rem;
+    content: ">$";
+  }
+
+  .terminal-hint {
+    padding-inline: 1rem;
   }
 
   .manifesto-copy > p {
