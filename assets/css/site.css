@@ -63,7 +63,6 @@ html {
 }
 
 body {
-  min-width: 20rem;
   margin: 0;
   color: var(--carbon);
   background-color: var(--paper);
@@ -138,6 +137,8 @@ code {
   border: 1px solid currentColor;
   font-family: var(--font-mono);
   font-size: 0.82em;
+  overflow-wrap: normal;
+  white-space: nowrap;
 }
 
 h1,
@@ -524,15 +525,15 @@ main > section > header > p:last-child {
 }
 
 .symptoms-list label {
-  display: grid;
+  display: block;
   min-height: 5rem;
-  align-items: center;
-  padding: 0.9rem 1.5rem 0.9rem 0;
-  grid-template-columns: 3.5rem minmax(0, 1fr);
+  padding: 1.45rem 1.5rem 1rem 0;
   cursor: pointer;
 }
 
-.symptoms-list label span {
+.symptoms-list label > span {
+  display: inline-block;
+  width: 3.5rem;
   color: var(--alert);
   font-family: var(--font-mono);
   font-size: 0.67rem;
@@ -1353,7 +1354,7 @@ body:has(.terminal-dialog[open]) {
 .error-diagnostics dl > div {
   display: grid;
   padding: 0.65rem 0;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: auto minmax(0, 1fr);
   gap: 1rem;
   border-bottom: 1px solid var(--rule);
 }
@@ -1368,6 +1369,8 @@ body:has(.terminal-dialog[open]) {
 .error-diagnostics dd {
   margin: 0;
   text-align: right;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 .error-diagnostics > p {
@@ -1733,8 +1736,8 @@ body:has(.site-footer)::after {
     grid-template-columns: 3.25rem minmax(0, 1fr);
   }
 
-  .symptoms-list label {
-    grid-template-columns: 2.5rem minmax(0, 1fr);
+  .symptoms-list label > span {
+    width: 2.5rem;
   }
 
   .stage-list {
