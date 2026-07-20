@@ -1,0 +1,60 @@
+name: Proposed treatment
+description: Suggest a useful feature, joke, recovery step, or craft improvement.
+title: "feat: "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The Department welcomes treatments that improve usefulness, accessibility, or quiet absurdity. A dependency is not automatically a treatment.
+
+  - type: textarea
+    id: need
+    attributes:
+      label: What need does this address?
+      description: Start with the visitor or contributor problem, not the implementation.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed treatment
+      description: Explain the smallest complete version of the idea.
+    validations:
+      required: true
+
+  - type: textarea
+    id: tone
+    attributes:
+      label: Tone and intent
+      description: Explain why the idea is self-aware rather than mean, preachy, promotional, or merely topical.
+    validations:
+      required: true
+
+  - type: textarea
+    id: baseline
+    attributes:
+      label: Static and accessible baseline
+      description: What remains usable without JavaScript, motion, a pointer, or network access after the initial page load?
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Smaller alternatives considered
+      description: Include the option of doing nothing. It has excellent performance characteristics.
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Departmental checks
+      options:
+        - label: I read the creative brief and contribution guide.
+          required: true
+        - label: This does not imitate official Anthropic branding or imply endorsement.
+          required: true
+        - label: This does not add tracking, surprise persistence, or undisclosed network requests.
+          required: true

@@ -1,0 +1,82 @@
+name: Incident report
+description: Report behavior that escaped departmental review.
+title: "fix: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for filing an incident. Do not include passwords, tokens, private prompts, or personal data. Sensitive security findings belong in a private security advisory.
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: Describe the defect and its user impact in a few precise sentences.
+      placeholder: The dependency meter reports Stage 9 after one symptom.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      description: Give the shortest sequence that reliably produces the behavior.
+      placeholder: |
+        1. Open the dependency check.
+        2. Select symptom 01.
+        3. Observe the stage marker.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+      placeholder: Stage 1 should be marked as current.
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Browser and environment
+      description: Include browser/version, operating system, viewport, input method, and whether JavaScript or reduced motion was enabled.
+      placeholder: Firefox 128, Linux, 390 × 844, keyboard, JavaScript on, reduced motion off.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: impact
+    attributes:
+      label: Primary impact
+      options:
+        - Accessibility or keyboard use
+        - Incorrect behavior
+        - Layout or responsive design
+        - Performance
+        - Privacy or security
+        - Copy or attribution
+        - Static deployment
+        - Other departmental concern
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Supporting evidence
+      description: Add screenshots, console output, or a minimal patch when useful. Redact private information first.
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Filing checks
+      options:
+        - label: I searched existing issues for this incident.
+          required: true
+        - label: I removed secrets, personal data, and private prompt content.
+          required: true
+        - label: I confirmed this is not the intentionally fictional diagnosis.
+          required: true
