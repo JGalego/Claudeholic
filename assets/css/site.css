@@ -346,6 +346,12 @@ main > section > header > p:nth-child(2),
   background: var(--administrative);
 }
 
+.result-panel button:disabled {
+  color: var(--rule-dark);
+  background: var(--paper-deep);
+  cursor: not-allowed;
+}
+
 .case-summary {
   position: relative;
   z-index: 1;
@@ -706,6 +712,56 @@ main > section > header > p:last-child {
 .protocol-list li > p:last-child {
   max-width: 34rem;
   color: var(--carbon-soft);
+}
+
+.prescription {
+  display: grid;
+  width: min(calc(100% - (var(--page-gutter) * 2)), var(--shell));
+  margin: -1.5rem auto 4rem;
+  padding: 1.5rem;
+  grid-template-columns: minmax(14rem, 0.7fr) minmax(0, 1.3fr);
+  align-items: center;
+  gap: 2rem;
+  border: 1px solid var(--recovery);
+  background: var(--paper-light);
+}
+
+.prescription h3 {
+  margin: 0 0 0.35rem;
+  color: var(--recovery);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.prescription p {
+  margin: 0;
+}
+
+.prescription button {
+  min-height: 3.25rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--recovery);
+  border-radius: 0;
+  color: var(--paper-light);
+  background: var(--recovery);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.prescription button:hover {
+  color: var(--recovery);
+  background: var(--paper-light);
+}
+
+.prescription output {
+  display: block;
+  min-height: 3.25rem;
+  padding-left: 2rem;
+  border-left: 1px solid var(--rule);
+  font-size: 1.15rem;
 }
 
 .panic-protocol {
@@ -1089,6 +1145,17 @@ body:has(.site-footer)::after {
   .records-grid,
   .site-footer {
     grid-template-columns: 1fr;
+  }
+
+  .prescription {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .prescription output {
+    padding: 1rem 0 0;
+    border-top: 1px solid var(--rule);
+    border-left: 0;
   }
 
   .protocol-list > li:nth-child(odd),
