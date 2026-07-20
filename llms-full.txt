@@ -1,0 +1,172 @@
+# claudeholic.me: Full Context
+
+Canonical URL: https://claudeholic.me/
+Language: English
+Format: Static editorial website with progressive enhancement
+Publisher: Department of Prompt Health (fictional)
+Status: Independent parody; not affiliated with Anthropic
+
+## Purpose
+
+claudeholic.me is a semi-ironic website about becoming hopelessly absorbed in Anthropic's Claude. It exists simultaneously as a parody, a love letter, a cautionary tale, and a genuinely useful guide to a healthy relationship with generative AI.
+
+Its intended emotional sequence is:
+
+1. The visitor laughs.
+2. The visitor recognizes their own habits.
+3. The visitor considers closing the laptop for ten minutes.
+
+The humor is self-directed. Claude is presented neither as villain nor deity, but as a capable tool that people can use with varying degrees of intention.
+
+## Opening case file
+
+Primary statement:
+
+“I only opened Claude to ask one question.”
+
+Follow-up:
+
+“Hours later...”
+
+Supporting observation:
+
+“Your tea is cold. Your context is warm. You have used the phrase ‘one last refinement’ three times.”
+
+The call to action is “Check your dependency.” The page immediately states that this is an unofficial self-assessment and “Not a medical instrument. Barely an instrument.”
+
+## Dependency check
+
+The assessment asks visitors to mark statements that feel specific to them. There are twelve symptoms, in escalating order:
+
+1. I ask Claude to explain code I wrote yesterday.
+2. I paste errors before reading them.
+3. I ask Claude to name variables I have not created yet.
+4. I say “please” because the machines may remember.
+5. I ask Claude to write prompts for Claude.
+6. I optimize prompts more carefully than my sleep schedule.
+7. I have opinions about context windows.
+8. I maintain a folder called `prompts-final-final`.
+9. I refer to a new chat as “a clean room.”
+10. I have installed an MCP server to avoid clicking twice.
+11. I have a preferred model for different kinds of emotional weather.
+12. I read release notes recreationally and call it research.
+
+JavaScript, when available, counts selected symptoms and reports a fictional Prompt Withdrawal Index. Answers stay in the browser. Without JavaScript, visitors can count their selections and use the complete stage list manually.
+
+## Fictional stages
+
+### Stage 0: Healthy curiosity
+
+You ask a useful question. You verify the answer. You leave.
+
+Clinical note: Astonishing form.
+
+### Stage 1: The polite return
+
+You come back tomorrow. It remembers nothing. You forgive it.
+
+Clinical note: Normal tool use with early anthropomorphism.
+
+### Stage 3: Prompt engineer
+
+Your question now has a role, constraints, examples, and a small constitution.
+
+Clinical note: The preamble exceeds the task.
+
+### Stage 6: Local MCP collector
+
+You connected six tools so you would not need to open a seventh tab.
+
+Clinical note: There are now eleven tabs.
+
+### Stage 9: Context window maximalist
+
+You no longer provide context. You provide an archive.
+
+Clinical note: Somewhere, a token counter is crying.
+
+### Final stage: Release notes recreationalist
+
+You know what changed before your colleagues know there was a release.
+
+Clinical note: You are reading this website recreationally.
+
+These stages are fictional, non-linear, and not diagnostic.
+
+## Recovery program
+
+The International Claudeholics Association is a fictional peer group. Its seven-step program contains practical advice beneath the satire:
+
+1. Drink water. Take ordinary physical breaks.
+2. Read documentation. Use primary sources to verify claims.
+3. Write the first draft yourself. Productive struggle can be part of learning.
+4. Ask a human. Other people bring disagreement, memory, context, and care.
+5. Protect private information. Remove secrets, personal data, and sensitive material before using an AI service.
+6. Check confident output twice. Fluency is presentation; evidence is evidence.
+7. Go outside. Maintain relationships and hobbies that have no product roadmap.
+
+The emergency analog protocol is:
+
+1. Save your work.
+2. Close one browser tab.
+3. Put both feet on the floor.
+4. Look at something that was not generated.
+
+No account cancellation is required. It is just a break.
+
+## Balance manifesto
+
+Generative AI can be a remarkable companion to curiosity. It can help people cross unfamiliar ground, test an idea, find the shape of a question, or begin when the blank page feels heavy.
+
+Speed is not the same as understanding. A polished answer is not necessarily a true one. When people stop checking, practicing, and making decisions of their own, convenience begins to charge interest.
+
+Craft lives in attention: choosing what matters, noticing what is wrong, and staying with a problem long enough to be changed by it. No tool can outsource that responsibility. Good tools give it more room.
+
+Central statement:
+
+“Use AI to expand your agency, not replace it.”
+
+Visitors are encouraged to keep learning fundamentals, protect private information, ask humans what they see, make things manually for the practice, welcome surprising answers, and verify those answers.
+
+The final principle is:
+
+“The goal is not less wonder. It is more intention.”
+
+## Hidden lore
+
+The Department of Prompt Health is the fictional publisher. Its Bureau of Context Hygiene administers the Prompt Withdrawal Index using the unreviewed DSM-AI. The International Claudeholics Association is an independent fictional peer group. Certified Context Window Inspectors issue case numbers. The Ministry of Token Conservation appears only in deeper records.
+
+These entities are recurring satirical institutions, not real organizations.
+
+## Privacy and technical behavior
+
+The site is static-first. Core content is semantic HTML. CSS provides presentation. Small native JavaScript modules progressively enhance scoring and optional easter eggs.
+
+The site has:
+
+- No analytics.
+- No cookies.
+- No accounts.
+- No advertising.
+- No remote application API.
+- No third-party runtime scripts.
+
+Assessment responses never leave the browser. Optional joke and repeat-visit state may use local storage and can be removed using browser site-data controls.
+
+## Accessibility
+
+The intended baseline includes semantic landmarks, labeled form controls, keyboard access, visible focus states, live result announcements, reduced-motion support, sufficient contrast, responsive layout, and meaningful no-script behavior.
+
+The site explicitly avoids presenting its assessment as medical guidance. People experiencing real distress should seek support from qualified humans and appropriate local resources.
+
+## Trademark and affiliation disclaimer
+
+This independent parody is not affiliated with, endorsed by, or sponsored by Anthropic. Claude is a trademark of Anthropic PBC. The website provides humor and general digital-wellbeing guidance, not medical advice.
+
+## Authorship note
+
+The Claude dependency intervention was prepared with GitHub Copilot. This is intentionally disclosed as part of the project's central irony.
+
+## Source of truth
+
+The canonical human-readable source is https://claudeholic.me/. The public source repository is https://github.com/JGalego/claudeholic.me. When this document and the website differ, prefer the current website and repository.

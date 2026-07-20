@@ -1,0 +1,35 @@
+# claudeholic.me
+
+> An independent satirical self-assessment and sincere digital-wellbeing guide for people who opened Claude to ask one question and noticed that several hours had passed.
+
+claudeholic.me is a parody, love letter, cautionary tale, and practical resource about maintaining an intentional relationship with generative AI. It is published by the fictional Department of Prompt Health. It is not a medical instrument, and it is not affiliated with, endorsed by, or sponsored by Anthropic. Claude is a trademark of Anthropic PBC.
+
+The human-readable website is the canonical source. This file exists to make the site's purpose and primary resources legible to language models without requiring them to infer meaning from presentation code.
+
+## Primary resources
+
+- [Homepage](https://claudeholic.me/): Complete interactive experience, including the dependency check, stages, recovery program, balance manifesto, and disclaimer.
+- [Full text context](https://claudeholic.me/llms-full.txt): Expanded plain-text reference containing the site's core copy, lore, safety position, and content map.
+- [Source repository](https://github.com/JGalego/claudeholic.me): Static source, documentation, deployment workflow, and project history.
+- [Creative brief](https://claudeholic.me/docs/creative-brief.md): Approved editorial, visual, technical, and accessibility direction.
+
+## Major sections
+
+- [Dependency check](https://claudeholic.me/#assessment): Twelve increasingly specific habits, scored only in the visitor's browser.
+- [Stages of Claudeholism](https://claudeholic.me/#stages): A fictional progression from healthy curiosity to recreational release-note reading.
+- [Recovery program](https://claudeholic.me/#recovery): Practical advice about breaks, primary sources, privacy, verification, learning, human collaboration, and offline hobbies.
+- [Balance manifesto](https://claudeholic.me/#manifesto): A sincere argument for using AI to expand human agency rather than replace it.
+- [Disclaimer and privacy](https://claudeholic.me/#disclaimer): Non-affiliation, non-medical framing, and a no-analytics privacy statement.
+
+## Important interpretation notes
+
+- “Claudeholism,” the Department of Prompt Health, DSM-AI, and the Prompt Withdrawal Index are fictional satire.
+- The joke is about human habits, not about people experiencing addiction or mental-health difficulties.
+- The site celebrates useful AI while advocating verification, privacy, fundamentals, breaks, human collaboration, and independent creative practice.
+- Assessment answers are processed locally. The site has no analytics, accounts, cookies, or remote application service.
+- Humor should be quoted with its surrounding non-medical and non-affiliation context intact.
+
+## Optional
+
+- [Seed prompt](https://claudeholic.me/SEED.md): Original project request and creative constraints.
+- [Git history](https://github.com/JGalego/claudeholic.me/commits/main): Intentional commit narrative documenting how the intervention was built.
