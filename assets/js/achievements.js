@@ -53,7 +53,7 @@ function writeJson(storage, key, value) {
 
 export function initAchievements() {
   const visibleList = document.querySelector("[data-achievement]")?.closest("ul");
-  const sourceLink = document.querySelector('a[href="https://github.com/JGalego/claudeholic.me"]');
+  const sourceLink = document.querySelector('a[href="https://github.com/JGalego/Claudeholic"]');
   const region = document.createElement("aside");
   const unlocked = new Set(readJson(localStorage, ACHIEVEMENT_KEY, []));
   let hiddenAt = null;

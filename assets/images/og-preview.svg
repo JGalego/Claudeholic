@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">claudeholic.me social preview</title>
+  <desc id="desc">An editorial case file reading one question, several hours.</desc>
+  <defs>
+    <pattern id="paper-grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#171714" stroke-opacity=".045"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#f3efe6"/>
+  <rect width="1200" height="630" fill="url(#paper-grid)"/>
+  <rect x="16" y="16" width="1168" height="598" fill="none" stroke="#171714" stroke-width="8"/>
+  <path d="M56 112h1088M815 112v446" fill="none" stroke="#171714" stroke-width="2"/>
+
+  <g font-family="monospace" letter-spacing="0">
+    <text x="58" y="73" fill="#171714" font-size="24" font-weight="700">claudeholic.me</text>
+    <text x="1142" y="73" fill="#a93f2d" font-size="18" text-anchor="end">CASE FILE 001 · STILL TYPING</text>
+    <text x="58" y="171" fill="#a93f2d" font-size="18" font-weight="700">UNOFFICIAL SELF-ASSESSMENT</text>
+    <text x="58" y="522" fill="#3f3e38" font-size="18">DEPARTMENT OF PROMPT HEALTH</text>
+    <text x="58" y="554" fill="#3f3e38" font-size="16">BUREAU OF CONTEXT HYGIENE</text>
+  </g>
+
+  <g fill="#171714" font-family="serif" letter-spacing="0">
+    <text x="52" y="270" font-size="92">One question.</text>
+    <text x="52" y="372" font-size="92">Several hours.</text>
+  </g>
+
+  <g transform="translate(844 145) rotate(-6 150 150)" fill="none" stroke="#a93f2d">
+    <circle cx="150" cy="150" r="145" stroke-width="5"/>
+    <circle cx="150" cy="150" r="127" stroke-width="2"/>
+    <circle cx="150" cy="150" r="83" stroke-width="3"/>
+    <path d="M48 110h45M207 110h45M48 190h45M207 190h45M150 69v21M150 210v21" stroke-width="3"/>
+    <path d="M116 126h-12v49h12M184 126h12v49h-12" stroke-width="6"/>
+    <g fill="#a93f2d" stroke="none" text-anchor="middle" font-family="monospace">
+      <text x="150" y="47" font-size="13" font-weight="700">DEPARTMENT OF PROMPT HEALTH</text>
+      <text x="150" y="264" font-size="11">BUREAU OF CONTEXT HYGIENE</text>
+      <text x="150" y="159" font-size="43" font-weight="700">DPH</text>
+      <text x="150" y="181" font-size="10">EST. TOO LATE</text>
+    </g>
+  </g>
+</svg>

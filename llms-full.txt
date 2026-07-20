@@ -174,4 +174,4 @@ The Claude dependency intervention was prepared with GitHub Copilot. This is int
 
 ## Source of truth
 
-The canonical human-readable source is https://claudeholic.me/. The public source repository is https://github.com/JGalego/claudeholic.me. When this document and the website differ, prefer the current website and repository.
+The canonical human-readable source is https://claudeholic.me/. The public source repository is https://github.com/JGalego/Claudeholic. When this document and the website differ, prefer the current website and repository.

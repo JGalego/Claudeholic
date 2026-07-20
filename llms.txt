@@ -10,7 +10,7 @@ The human-readable website is the canonical source. This file exists to make the
 
 - [Homepage](https://claudeholic.me/): Complete interactive experience, including the dependency check, stages, recovery program, balance manifesto, and disclaimer.
 - [Full text context](https://claudeholic.me/llms-full.txt): Expanded plain-text reference containing the site's core copy, lore, safety position, and content map.
-- [Source repository](https://github.com/JGalego/claudeholic.me): Static source, documentation, deployment workflow, and project history.
+- [Source repository](https://github.com/JGalego/Claudeholic): Static source, documentation, deployment workflow, and project history.
 - [Creative brief](https://claudeholic.me/docs/creative-brief.md): Approved editorial, visual, technical, and accessibility direction.
 
 ## Major sections
@@ -32,4 +32,4 @@ The human-readable website is the canonical source. This file exists to make the
 ## Optional
 
 - [Seed prompt](https://claudeholic.me/SEED.md): Original project request and creative constraints.
-- [Git history](https://github.com/JGalego/claudeholic.me/commits/main): Intentional commit narrative documenting how the intervention was built.
+- [Git history](https://github.com/JGalego/Claudeholic/commits/main): Intentional commit narrative documenting how the intervention was built.
