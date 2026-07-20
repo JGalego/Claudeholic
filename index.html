@@ -33,6 +33,13 @@
     <link rel="canonical" href="https://claudeholic.me/">
     <link rel="alternate" type="text/plain" href="./llms.txt" title="Language model context">
     <link rel="icon" href="./assets/images/favicon.svg" type="image/svg+xml">
+    <link
+      rel="preload"
+      href="./assets/fonts/newsreader-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    >
     <link rel="stylesheet" href="./assets/css/site.css">
     <title>claudeholic.me — One question. Several hours.</title>
 
@@ -100,6 +107,7 @@
             width="240"
             height="240"
             alt="Seal of the fictional Department of Prompt Health"
+            fetchpriority="high"
           >
           <dl>
             <div>
@@ -461,7 +469,7 @@
 
     <footer class="site-footer">
       <div class="footer-brand">
-        <a href="#top" aria-label="Back to the top">claudeholic.me</a>
+        <a href="#top" aria-label="claudeholic.me, back to the top">claudeholic.me</a>
         <p>Powered by caffeine, curiosity, and disclosed anthropomorphism.</p>
       </div>
 
