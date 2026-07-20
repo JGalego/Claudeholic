@@ -818,6 +818,45 @@ main > section > header > p:last-child {
   border-bottom: 1px solid var(--rule);
 }
 
+.panic-loader {
+  padding: 3rem;
+  color: var(--paper-light);
+  background: var(--carbon);
+}
+
+.panic-loader p {
+  display: flex;
+  margin-bottom: 1rem;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
+.panic-loader progress {
+  width: 100%;
+  height: 2rem;
+  appearance: none;
+  border: 1px solid var(--paper-light);
+  border-radius: 0;
+  background: var(--carbon);
+}
+
+.panic-loader progress::-webkit-progress-bar {
+  background: var(--carbon);
+}
+
+.panic-loader progress::-webkit-progress-value {
+  background: var(--signal);
+  transition: width 280ms linear;
+}
+
+.panic-loader progress::-moz-progress-bar {
+  background: var(--signal);
+  transition: width 280ms linear;
+}
+
 #manifesto {
   color: var(--paper-light);
   background: var(--recovery);
@@ -919,6 +958,84 @@ main > section > header > p:last-child {
   font-size: 1rem;
 }
 
+.js .records-grid li[data-achievement] {
+  position: relative;
+  padding-right: 6.5rem;
+}
+
+.js .records-grid li[data-state="locked"] {
+  opacity: 0.52;
+}
+
+.achievement-state {
+  position: absolute;
+  top: 1.35rem;
+  right: 0;
+  color: var(--alert-dark);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+[data-state="unlocked"] .achievement-state {
+  color: var(--recovery);
+}
+
+.achievement-region {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 150;
+  display: grid;
+  width: min(25rem, calc(100% - 2.5rem));
+  gap: 0.75rem;
+  pointer-events: none;
+}
+
+.achievement-toast {
+  padding: 1.25rem;
+  border: 1px solid var(--administrative);
+  color: var(--paper-light);
+  background: var(--carbon);
+  box-shadow: 0.5rem 0.5rem 0 var(--alert);
+  animation: achievement-filed 280ms ease-out both;
+  pointer-events: auto;
+}
+
+.achievement-toast > span {
+  display: block;
+  margin-bottom: 0.75rem;
+  color: var(--signal);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.achievement-toast strong,
+.achievement-toast p {
+  display: block;
+}
+
+.achievement-toast strong {
+  font-size: 1.3rem;
+}
+
+.achievement-toast p {
+  margin: 0.35rem 0 0;
+  color: #c7c0b4;
+  font-size: 0.9rem;
+}
+
+.achievement-toast a {
+  display: inline-block;
+  margin-top: 0.75rem;
+  color: var(--administrative);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+}
+
 .records-grid ol {
   counter-reset: footnote;
 }
@@ -1014,6 +1131,18 @@ body:has(.site-footer)::after {
   from {
     opacity: 0;
     transform: translateY(1.5rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes achievement-filed {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
   }
 
   to {
@@ -1248,6 +1377,10 @@ body:has(.site-footer)::after {
   }
 
   .panic-protocol > div {
+    padding: 2rem 1.25rem;
+  }
+
+  .panic-loader {
     padding: 2rem 1.25rem;
   }
 
