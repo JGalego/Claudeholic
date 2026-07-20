@@ -11,6 +11,8 @@
     <meta name="author" content="Department of Prompt Health">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <link rel="canonical" href="https://claudeholic.me/">
+    <link rel="icon" href="./assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./assets/css/site.css">
     <title>claudeholic.me — One question. Several hours.</title>
 
     <script type="application/ld+json">
@@ -34,12 +36,12 @@
       This intervention was prepared with GitHub Copilot during an inquiry into
       Claude dependency. Governance reviewed the conflict and went for coffee.
     -->
-    <a href="#main-content">Skip to the intervention</a>
+    <a class="skip-link" href="#main-content">Skip to the intervention</a>
 
-    <header aria-labelledby="case-title">
-      <nav aria-label="Primary navigation">
-        <a href="#top" aria-label="claudeholic.me, back to top">claudeholic.me</a>
-        <ul>
+    <header class="site-header" aria-labelledby="case-title">
+      <nav class="docket-nav shell" aria-label="Primary navigation">
+        <a class="wordmark" href="#top" aria-label="claudeholic.me, back to top">claudeholic.me</a>
+        <ul class="nav-list">
           <li><a href="#assessment">Dependency check</a></li>
           <li><a href="#stages">Stages</a></li>
           <li><a href="#recovery">Recovery</a></li>
@@ -47,46 +49,57 @@
         </ul>
       </nav>
 
-      <div>
+      <div class="docket-bar shell">
         <p>Department of Prompt Health · Bureau of Context Hygiene</p>
         <p>Case file <strong>001</strong> · Status: still typing</p>
       </div>
 
-      <div>
-        <p>Unofficial self-assessment</p>
-        <h1 id="case-title">
-          I only opened Claude<br>
-          to ask one question.
-        </h1>
-        <p><strong>Hours later...</strong></p>
-        <p>
-          Your tea is cold. Your context is warm. You have used the phrase
-          “one last refinement” three times.
-        </p>
-        <a href="#assessment">Check your dependency</a>
-        <small>Estimated time: shorter than your current prompt.</small>
-      </div>
+      <div class="hero-layout shell">
+        <div class="hero-copy">
+          <p class="eyebrow">Unofficial self-assessment</p>
+          <h1 id="case-title">
+            I only opened Claude<br>
+            to ask one question.
+          </h1>
+          <p class="elapsed"><strong>Hours later...</strong></p>
+          <p class="hero-deck">
+            Your tea is cold. Your context is warm. You have used the phrase
+            “one last refinement” three times.
+          </p>
+          <div class="hero-action">
+            <a class="primary-action" href="#assessment">Check your dependency <span aria-hidden="true">↓</span></a>
+            <small>Estimated time: shorter than your current prompt.</small>
+          </div>
+        </div>
 
-      <aside aria-label="Case summary">
-        <dl>
-          <div>
-            <dt>Known cause</dt>
-            <dd>Curiosity</dd>
-          </div>
-          <div>
-            <dt>Primary vector</dt>
-            <dd>“While I have you...”</dd>
-          </div>
-          <div>
-            <dt>Prognosis</dt>
-            <dd>Probably fine. Hydrate.</dd>
-          </div>
-        </dl>
-        <p>
-          Not a medical instrument. Barely an instrument.
-          <a href="#disclaimer">Read the responsible part</a>.
-        </p>
-      </aside>
+        <aside class="case-summary" aria-label="Case summary">
+          <img
+            class="department-seal"
+            src="./assets/images/department-seal.svg"
+            width="240"
+            height="240"
+            alt="Seal of the fictional Department of Prompt Health"
+          >
+          <dl>
+            <div>
+              <dt>Known cause</dt>
+              <dd>Curiosity</dd>
+            </div>
+            <div>
+              <dt>Primary vector</dt>
+              <dd>“While I have you...”</dd>
+            </div>
+            <div>
+              <dt>Prognosis</dt>
+              <dd>Probably fine. Hydrate.</dd>
+            </div>
+          </dl>
+          <p>
+            Not a medical instrument. Barely an instrument.
+            <a href="#disclaimer">Read the responsible part</a>.
+          </p>
+        </aside>
+      </div>
     </header>
 
     <main id="main-content">
@@ -101,8 +114,8 @@
           </p>
         </header>
 
-        <form>
-          <fieldset>
+        <form class="assessment-form">
+          <fieldset class="symptoms-list">
             <legend>In the past seven days...</legend>
             <div>
               <input type="checkbox" id="symptom-01" name="symptoms" value="1">
@@ -190,7 +203,7 @@
             </div>
           </fieldset>
 
-          <section aria-labelledby="index-title">
+          <section class="result-panel" aria-labelledby="index-title">
             <p>Live departmental estimate</p>
             <h3 id="index-title">Prompt Withdrawal Index</h3>
             <p>
@@ -226,7 +239,7 @@
           </p>
         </header>
 
-        <ol>
+        <ol class="stage-list">
           <li id="stage-0" data-stage="0">
             <p>Stage 0</p>
             <h3>Healthy curiosity</h3>
@@ -277,7 +290,7 @@
           </p>
         </header>
 
-        <ol>
+        <ol class="protocol-list">
           <li>
             <p>01 · Biological maintenance</p>
             <h3>Drink water.</h3>
@@ -315,7 +328,7 @@
           </li>
         </ol>
 
-        <details id="panic-protocol">
+        <details class="panic-protocol" id="panic-protocol">
           <summary>Initiate emergency analog protocol</summary>
           <div>
             <p><strong>Remain calm.</strong> Your context window cannot follow you here.</p>
@@ -337,7 +350,7 @@
           <h2 id="manifesto-title">Keep the spark. Keep the skepticism.</h2>
         </header>
 
-        <div>
+        <div class="manifesto-copy">
           <p>
             Generative AI can be a remarkable companion to curiosity. It can
             help us cross unfamiliar ground, test an idea, find the shape of a
@@ -379,7 +392,7 @@
           <h2 id="records-title">For those still reading.</h2>
         </header>
 
-        <div>
+        <div class="records-grid">
           <section aria-labelledby="achievements-title">
             <h3 id="achievements-title">Achievements under review</h3>
             <ul>
@@ -410,13 +423,13 @@
       </section>
     </main>
 
-    <footer>
-      <div>
+    <footer class="site-footer">
+      <div class="footer-brand">
         <a href="#top" aria-label="Back to the top">claudeholic.me</a>
         <p>Powered by caffeine, curiosity, and disclosed anthropomorphism.</p>
       </div>
 
-      <nav aria-label="Department records">
+      <nav class="footer-nav" aria-label="Department records">
         <ul>
           <li><a href="https://github.com/JGalego/claudeholic.me">Source code</a></li>
           <li><a href="./llms.txt">For language models</a></li>

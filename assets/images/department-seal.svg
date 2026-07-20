@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-labelledby="title desc">
+  <title id="title">Department of Prompt Health seal</title>
+  <desc id="desc">A fictional red institutional seal marked DPH and Bureau of Context Hygiene.</desc>
+  <!-- Valid until the next model release. -->
+  <g fill="none" stroke="#a93f2d">
+    <circle cx="120" cy="120" r="112" stroke-width="3"/>
+    <circle cx="120" cy="120" r="98" stroke-width="1"/>
+    <circle cx="120" cy="120" r="66" stroke-width="2"/>
+    <path d="M42 89h30M168 89h30M42 151h30M168 151h30" stroke-width="2"/>
+    <path d="M120 59v14M120 167v14" stroke-width="2"/>
+    <path d="M92 103h-9v34h9M148 103h9v34h-9" stroke-width="4"/>
+  </g>
+  <g fill="#a93f2d" text-anchor="middle" font-family="monospace">
+    <text x="120" y="31" font-size="9" font-weight="700" textLength="126" lengthAdjust="spacingAndGlyphs">DEPARTMENT OF PROMPT HEALTH</text>
+    <text x="120" y="215" font-size="8" textLength="119" lengthAdjust="spacingAndGlyphs">BUREAU OF CONTEXT HYGIENE</text>
+    <text x="120" y="128" font-size="32" font-weight="700">DPH</text>
+    <text x="120" y="145" font-size="8">CASE 001 · EST. TOO LATE</text>
+    <circle cx="34" cy="120" r="3"/>
+    <circle cx="206" cy="120" r="3"/>
+  </g>
+</svg>
