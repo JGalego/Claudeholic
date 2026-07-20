@@ -93,6 +93,11 @@ Clinical note: You are reading this website recreationally.
 
 These stages are fictional, non-linear, and not diagnostic.
 
+The stage sequence closes with a short external field report from Boris Cherny,
+quoted by Steven Levy in WIRED on May 26, 2026. Cherny compared the experience
+to having a jet pack that he could not stop thinking about. The linked source is
+https://www.wired.com/story/how-ai-agents-plunged-tech-world-into-chaos/.
+
 ## Recovery program
 
 The International Claudeholics Association is a fictional peer group. Its seven-step program contains practical advice beneath the satire:

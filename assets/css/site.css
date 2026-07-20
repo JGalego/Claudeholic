@@ -691,6 +691,51 @@ main > section > header > p:last-child {
   color: var(--carbon);
 }
 
+.field-report {
+  display: grid;
+  width: min(calc(100% - (var(--page-gutter) * 2)), var(--shell));
+  margin: 4rem auto 0;
+  padding-top: 2rem;
+  grid-template-columns: minmax(0, 2fr) minmax(16rem, 0.7fr);
+  align-items: end;
+  gap: 4rem;
+  border-top: 1px solid var(--rule-dark);
+}
+
+.field-report > div > p {
+  margin-bottom: 2rem;
+  color: var(--signal);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.field-report blockquote {
+  margin: 0;
+}
+
+.field-report blockquote p {
+  max-width: 23ch;
+  margin: 0;
+  color: var(--paper-light);
+  font-size: 3.4rem;
+  line-height: 1.02;
+}
+
+.field-report figcaption {
+  padding-left: 1.5rem;
+  border-left: 1px solid var(--rule-dark);
+  color: #c7c0b4;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  line-height: 1.7;
+}
+
+.field-report abbr {
+  text-decoration: none;
+}
+
 .protocol-list {
   display: grid;
   margin-top: 0;
@@ -1471,8 +1516,19 @@ body:has(.site-footer)::after {
   .protocol-list,
   .manifesto-copy,
   .records-grid,
+  .field-report,
   .site-footer {
     grid-template-columns: 1fr;
+  }
+
+  .field-report {
+    gap: 2rem;
+  }
+
+  .field-report figcaption {
+    padding: 1.5rem 0 0;
+    border-top: 1px solid var(--rule-dark);
+    border-left: 0;
   }
 
   .prescription {
@@ -1573,6 +1629,10 @@ body:has(.site-footer)::after {
 
   .protocol-list h3 {
     font-size: 2.2rem;
+  }
+
+  .field-report blockquote p {
+    font-size: 2.5rem;
   }
 
   .panic-protocol > div {
