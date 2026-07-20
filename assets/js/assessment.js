@@ -12,6 +12,9 @@ export function initAssessment() {
   const scoreLabel = document.querySelector("#score-label");
   const meter = document.querySelector("#dependency-meter");
   const result = document.querySelector("#assessment-result");
+  const guidanceTitle = document.querySelector("#guidance-title");
+  const guidanceAction = document.querySelector("#guidance-action");
+  const guidanceSteps = document.querySelector("#guidance-steps");
   const resetButton = form.querySelector('button[type="reset"]');
   const stages = [...document.querySelectorAll(".stage-list [data-stage]")];
 
@@ -26,6 +29,15 @@ export function initAssessment() {
     meter.value = score;
     meter.textContent = `${score} of ${MAXIMUM_SCORE}`;
     result.textContent = level.message;
+    guidanceTitle.textContent = level.guidance.title;
+    guidanceAction.textContent = level.guidance.action;
+    guidanceSteps.replaceChildren(
+      ...level.guidance.steps.map((step) => {
+        const item = document.createElement("li");
+        item.textContent = step;
+        return item;
+      }),
+    );
     resetButton.disabled = score === 0;
     form.dataset.score = String(score);
 
@@ -39,7 +51,7 @@ export function initAssessment() {
 
     document.dispatchEvent(
       new CustomEvent("claudeholic:score", {
-        detail: { score, stage: level.stage },
+        detail: { score, stage: level.stage, guidance: level.guidance },
       }),
     );
   };

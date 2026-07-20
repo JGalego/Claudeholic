@@ -606,9 +606,62 @@ main > section > header > p:last-child {
 }
 
 #assessment-result {
-  min-height: 9rem;
+  min-height: 7rem;
   margin: 2rem 0;
   font-size: 1.25rem;
+}
+
+.result-guidance {
+  margin: 0 0 2rem;
+  padding: 1.5rem 0;
+  border-block: 1px solid var(--rule);
+}
+
+.result-guidance > p:first-child {
+  margin-bottom: 1rem;
+  color: var(--recovery);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.result-guidance h4 {
+  margin: 0 0 0.75rem;
+  color: var(--recovery);
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+#guidance-action {
+  margin-bottom: 1.25rem;
+  color: var(--carbon-soft);
+  font-size: 1rem;
+}
+
+#guidance-steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#guidance-steps li {
+  position: relative;
+  padding: 0.6rem 0 0.6rem 1.4rem;
+  border-top: 1px solid var(--paper-deep);
+  color: var(--carbon-soft);
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  line-height: 1.55;
+}
+
+#guidance-steps li::before {
+  position: absolute;
+  left: 0;
+  color: var(--recovery);
+  content: "→";
 }
 
 .result-panel button {
