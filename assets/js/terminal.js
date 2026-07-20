@@ -205,6 +205,13 @@ export function initTerminal(unlockAchievement = () => {}) {
 
   closeButton.addEventListener("click", () => dialog.close());
 
+  dialog.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      event.preventDefault();
+      dialog.close();
+    }
+  });
+
   document.addEventListener("keydown", (event) => {
     if (event.ctrlKey && event.shiftKey && event.key === ".") {
       open();
