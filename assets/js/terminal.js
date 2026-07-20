@@ -99,7 +99,7 @@ export function initTerminal(unlockAchievement = () => {}) {
   };
 
   const open = () => {
-    if (!dialog.open) {
+    if (!dialog.open && !document.querySelector("dialog[open]")) {
       dialog.showModal();
       boot();
       unlockAchievement("terminal-mode");
@@ -208,6 +208,7 @@ export function initTerminal(unlockAchievement = () => {}) {
   dialog.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
       event.preventDefault();
+      event.stopPropagation();
       dialog.close();
     }
   });
