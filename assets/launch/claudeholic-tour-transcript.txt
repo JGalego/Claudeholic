@@ -1,0 +1,36 @@
+claudeholic.me product tour — visual transcript
+Duration: 11.3 seconds
+Audio: none
+
+00:00–00:01.2
+The editorial homepage reads, “I only opened Claude to ask one question,” beside
+the red seal of the fictional Department of Prompt Health.
+
+00:01.2–00:02.6
+The page scrolls into the dependency-check form.
+
+00:02.6–00:04.1
+Five symptom checkboxes are selected one by one. The Prompt Withdrawal Index
+reaches 5 out of 12 and Stage 3, Prompt Engineer.
+
+00:04.1–00:05.1
+The result panel shows score-specific practical guidance and the control labeled
+“Issue my assessment report.”
+
+00:05.1–00:06.9
+A Departmental Assessment Report opens. It displays a DPH-05 case number, a score
+of 5 out of 12, Stage 3 Prompt Engineer, the finding, and a recommendation to
+attempt the next small problem unaided before using AI for critique. Controls at
+right offer copyable report text and a downloadable case card.
+
+00:06.9–00:07.3
+The report closes and returns to the assessment.
+
+00:07.3–00:09.5
+The hidden Context Hygiene Terminal opens. The command “status” is typed.
+
+00:09.5–00:11.3
+Terminal output reports “PROMPT WITHDRAWAL INDEX: 5/12,” “CURRENT FILING: STAGE 3
+· PROMPT ENGINEER,” and “NETWORK TRANSMISSION: NONE.”
+
+End of silent tour.

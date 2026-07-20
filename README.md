@@ -39,7 +39,7 @@ It has:
 - zero runtime dependencies;
 - no framework or build step;
 - no analytics, cookies, accounts, or remote application API;
-- complete content without JavaScript;
+- complete core reading, checklist, stages, and manual scoring without JavaScript;
 - progressive local-only interactions when JavaScript is available;
 - self-hosted fonts and original visual assets;
 - a dependency-free validation script; and
@@ -111,6 +111,13 @@ The implementation follows a few strict rules:
 Read [the creative brief](docs/creative-brief.md) for the full editorial and
 technical direction.
 
+## Launch materials
+
+The [launch kit](docs/launch-kit.md) contains verified project claims,
+channel-specific announcement drafts, alt text, three current screenshots, and
+an 11-second product tour. The media is generated from the real local site and
+lives under `assets/launch/`.
+
 <details>
 <summary>Easter egg field notes (contains spoilers)</summary>
 
@@ -126,10 +133,11 @@ technical direction.
 
 ## Privacy
 
-Assessment answers are never transmitted or persisted. Optional achievements
-and visit counts use `localStorage`; one-session detection uses
-`sessionStorage`. Clearing site data removes all of it. The site contains no
-analytics or tracking code.
+Assessment answers are never transmitted, and individual checkbox selections
+are not persisted. Coarse assessment milestones, unlocked achievements, and a
+visit count are stored automatically in `localStorage`; one-session detection
+uses `sessionStorage`. Clearing site data removes all of it. The site contains
+no analytics or tracking code.
 
 ## Contributing
 

@@ -30,7 +30,10 @@ function createDialog() {
         <div class="report-finding">
           <div>
             <p>Prompt Withdrawal Index</p>
-            <strong><span data-report-score></span><span aria-hidden="true"> / 12</span></strong>
+            <strong>
+              <span aria-hidden="true"><span data-report-score></span> / 12</span>
+              <span class="visually-hidden" data-report-score-summary>0 out of 12</span>
+            </strong>
           </div>
           <div>
             <p data-report-stage></p>
@@ -219,6 +222,7 @@ async function copyText(text) {
 function fillReport(dialog, report) {
   dialog.querySelector("[data-report-case]").textContent = `Case ${report.caseNumber}`;
   dialog.querySelector("[data-report-score]").textContent = String(report.score);
+  dialog.querySelector("[data-report-score-summary]").textContent = `${report.score} out of ${report.maximumScore}`;
   dialog.querySelector("[data-report-stage]").textContent = `Stage ${report.stage}`;
   dialog.querySelector("[data-report-label]").textContent = report.label;
   dialog.querySelector("[data-report-finding]").textContent = report.finding;

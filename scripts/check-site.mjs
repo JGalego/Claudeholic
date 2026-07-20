@@ -49,11 +49,57 @@ function assertLocalReference(sourceFile, reference, label) {
   report(insideRoot && fs.existsSync(target), `${label} does not resolve: ${reference}`);
 }
 
+function readMp4Boxes(buffer, start = 0, end = buffer.length) {
+  const boxes = [];
+  let offset = start;
+
+  while (offset + 8 <= end) {
+    const declaredSize = buffer.readUInt32BE(offset);
+    const type = buffer.subarray(offset + 4, offset + 8).toString("ascii");
+    let headerSize = 8;
+    let size = declaredSize;
+
+    if (declaredSize === 1) {
+      if (offset + 16 > end) {
+        break;
+      }
+
+      size = Number(buffer.readBigUInt64BE(offset + 8));
+      headerSize = 16;
+    } else if (declaredSize === 0) {
+      size = end - offset;
+    }
+
+    if (size < headerSize || offset + size > end) {
+      break;
+    }
+
+    boxes.push({
+      type,
+      start: offset,
+      dataStart: offset + headerSize,
+      end: offset + size,
+    });
+    offset += size;
+  }
+
+  return boxes;
+}
+
+function mp4Children(buffer, box) {
+  return readMp4Boxes(buffer, box.dataStart, box.end);
+}
+
+function mp4Child(buffer, box, type) {
+  return mp4Children(buffer, box).find((child) => child.type === type);
+}
+
 const requiredFiles = [
   ".nojekyll",
   "404.html",
   "CNAME",
   "CONTRIBUTING.md",
+  "docs/launch-kit.md",
   "LICENSE",
   "LICENSE-CONTENT",
   "README.md",
@@ -179,6 +225,146 @@ const pngSignature = socialPreview.subarray(0, 8).toString("hex");
 report(pngSignature === "89504e470d0a1a0a", "Social preview is not a valid PNG");
 report(socialPreview.readUInt32BE(16) === 1200, "Social preview must be 1200 pixels wide");
 report(socialPreview.readUInt32BE(20) === 630, "Social preview must be 630 pixels high");
+
+const launchScreenshots = [
+  "01-hero.png",
+  "02-assessment-report.png",
+  "03-context-window-census.png",
+];
+let launchMediaSize = 0;
+
+for (const screenshot of launchScreenshots) {
+  const screenshotPath = path.join(ROOT, "assets", "launch", screenshot);
+  report(fs.existsSync(screenshotPath), `Launch screenshot is missing: ${screenshot}`);
+
+  if (fs.existsSync(screenshotPath)) {
+    const image = fs.readFileSync(screenshotPath);
+    launchMediaSize += image.length;
+    report(image.subarray(0, 8).toString("hex") === "89504e470d0a1a0a", `${screenshot} must be a valid PNG`);
+    report(image.readUInt32BE(16) === 1440, `${screenshot} must be 1440 pixels wide`);
+    report(image.readUInt32BE(20) === 900, `${screenshot} must be 900 pixels high`);
+    report(image.includes(Buffer.from("IEND", "ascii")), `${screenshot} must contain a complete PNG end marker`);
+    report(image.length < 500_000, `${screenshot} must remain under 500 KB`);
+  }
+}
+
+const launchVideoPath = path.join(ROOT, "assets", "launch", "claudeholic-tour.mp4");
+report(fs.existsSync(launchVideoPath), "Launch product tour is missing");
+
+if (fs.existsSync(launchVideoPath)) {
+  const video = fs.readFileSync(launchVideoPath);
+  launchMediaSize += video.length;
+  const topLevelBoxes = readMp4Boxes(video);
+  const fileTypeBox = topLevelBoxes.find((box) => box.type === "ftyp");
+  const movieBox = topLevelBoxes.find((box) => box.type === "moov");
+  report(Boolean(fileTypeBox), "Launch product tour must contain an MP4 file-type box");
+  report(Boolean(movieBox), "Launch product tour must contain an MP4 movie box");
+
+  const movieHeader = movieBox ? mp4Child(video, movieBox, "mvhd") : undefined;
+  const tracks = movieBox
+    ? mp4Children(video, movieBox)
+      .filter((box) => box.type === "trak")
+      .map((track) => {
+        const media = mp4Child(video, track, "mdia");
+        const handler = media ? mp4Child(video, media, "hdlr") : undefined;
+        const mediaInfo = media ? mp4Child(video, media, "minf") : undefined;
+        const sampleTable = mediaInfo ? mp4Child(video, mediaInfo, "stbl") : undefined;
+        const sampleDescription = sampleTable ? mp4Child(video, sampleTable, "stsd") : undefined;
+        const trackHeader = mp4Child(video, track, "tkhd");
+        const handlerType = handler && handler.dataStart + 12 <= handler.end
+          ? video.subarray(handler.dataStart + 8, handler.dataStart + 12).toString("ascii")
+          : "";
+        const codec = sampleDescription && sampleDescription.dataStart + 16 <= sampleDescription.end
+          ? video.subarray(sampleDescription.dataStart + 12, sampleDescription.dataStart + 16).toString("ascii")
+          : "";
+        const width = trackHeader ? video.readUInt32BE(trackHeader.end - 8) / 65_536 : 0;
+        const height = trackHeader ? video.readUInt32BE(trackHeader.end - 4) / 65_536 : 0;
+        return { handlerType, codec, width, height };
+      })
+    : [];
+  const videoTracks = tracks.filter((track) => track.handlerType === "vide");
+  const audioTracks = tracks.filter((track) => track.handlerType === "soun");
+
+  report(videoTracks.length === 1, `Launch product tour must contain exactly one video track, received ${videoTracks.length}`);
+  report(audioTracks.length === 0, `Silent launch product tour must contain no audio tracks, received ${audioTracks.length}`);
+
+  if (videoTracks.length === 1) {
+    const [videoTrack] = videoTracks;
+    report(videoTrack.codec === "avc1", `Launch product tour must use H.264/avc1, received ${videoTrack.codec || "unknown"}`);
+    report(videoTrack.width === 1280, `Launch product tour must be 1280 pixels wide, received ${videoTrack.width}`);
+    report(videoTrack.height === 720, `Launch product tour must be 720 pixels high, received ${videoTrack.height}`);
+  }
+
+  report(Boolean(movieHeader), "Launch product tour must contain movie timing metadata");
+
+  if (movieHeader) {
+    const movieVersion = video.readUInt8(movieHeader.dataStart);
+    const timescaleOffset = movieHeader.dataStart + (movieVersion === 1 ? 20 : 12);
+    const durationOffset = movieHeader.dataStart + (movieVersion === 1 ? 24 : 16);
+    const timescale = video.readUInt32BE(timescaleOffset);
+    const duration = movieVersion === 1
+      ? Number(video.readBigUInt64BE(durationOffset))
+      : video.readUInt32BE(durationOffset);
+    const seconds = duration / timescale;
+    report(Math.abs(seconds - 11.3) < 0.05, `Launch product tour must remain 11.3 seconds, received ${seconds.toFixed(2)}`);
+  }
+
+  report(video.length < 2_000_000, "Launch product tour must remain under 2 MB");
+}
+
+const launchTranscriptPath = path.join(ROOT, "assets", "launch", "claudeholic-tour-transcript.txt");
+report(fs.existsSync(launchTranscriptPath), "Launch product tour transcript is missing");
+
+if (fs.existsSync(launchTranscriptPath)) {
+  const transcript = fs.readFileSync(launchTranscriptPath, "utf8");
+  const expectedScenes = [
+    "00:00–00:01.2",
+    "00:01.2–00:02.6",
+    "00:02.6–00:04.1",
+    "00:04.1–00:05.1",
+    "00:05.1–00:06.9",
+    "00:06.9–00:07.3",
+    "00:07.3–00:09.5",
+    "00:09.5–00:11.3",
+  ];
+
+  for (const scene of expectedScenes) {
+    report(transcript.includes(scene), `Launch transcript must describe scene ${scene}`);
+  }
+}
+
+report(launchMediaSize < 2_000_000, "Complete launch media package must remain under 2 MB");
+
+const launchKitPath = path.join(ROOT, "docs", "launch-kit.md");
+const launchKit = fs.readFileSync(launchKitPath, "utf8");
+const requiredLaunchLinks = [
+  "../assets/launch/01-hero.png",
+  "../assets/launch/02-assessment-report.png",
+  "../assets/launch/03-context-window-census.png",
+  "../assets/launch/claudeholic-tour.mp4",
+  "../assets/launch/claudeholic-tour-transcript.txt",
+];
+
+for (const launchLink of requiredLaunchLinks) {
+  report(launchKit.includes(`](${launchLink})`), `Launch kit must link to ${launchLink}`);
+}
+
+const markdownFiles = listFiles(ROOT, (file) => file.endsWith(".md"));
+
+for (const markdownFile of markdownFiles) {
+  const name = relativePath(markdownFile);
+  const markdown = fs.readFileSync(markdownFile, "utf8");
+
+  for (const match of markdown.matchAll(/\[[^\]]+\]\(([^)]+)\)/g)) {
+    const reference = match[1];
+
+    if (/^(?:https?:|mailto:|tel:|#)/i.test(reference)) {
+      continue;
+    }
+
+    assertLocalReference(markdownFile, reference, `${name} link`);
+  }
+}
 
 const cname = fs.readFileSync(path.join(ROOT, "CNAME"), "utf8").trim();
 const robots = fs.readFileSync(path.join(ROOT, "robots.txt"), "utf8");

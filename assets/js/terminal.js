@@ -150,7 +150,7 @@ export function initTerminal(unlockAchievement = () => {}) {
       ];
     },
     privacy() {
-      return ["No analytics. No cookies. No remote shell.", "Achievements use localStorage; session visits use sessionStorage.", "Clear browser site data to shred both records."];
+      return ["No analytics. No cookies. No remote shell.", "Achievements and visit count use localStorage; session-seen detection uses sessionStorage.", "Clear browser site data to shred both records."];
     },
     "touch-grass"() {
       return ["ERROR: Physical world cannot be rendered in this terminal.", "Suggested action: close terminal, locate door, proceed without API."];
