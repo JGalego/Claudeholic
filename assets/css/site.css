@@ -2572,6 +2572,12 @@ body:has(.site-footer)::after {
     font-size: 2.8rem;
   }
 
+  .result-panel h3 {
+    max-width: none;
+    font-size: 2.25rem;
+    overflow-wrap: normal;
+  }
+
   main > section > header > p:last-child {
     font-size: 1.05rem;
   }
@@ -2590,6 +2596,12 @@ body:has(.site-footer)::after {
 
   .stage-list > li {
     min-height: 0;
+  }
+
+  .stage-list h3 {
+    max-width: none;
+    font-size: 1.9rem;
+    overflow-wrap: normal;
   }
 
   .protocol-list > li {
@@ -2736,6 +2748,14 @@ body:has(.site-footer)::after {
     scrollbar-width: none;
   }
 
+  .publication-nav li {
+    flex: none;
+  }
+
+  .publication-nav a {
+    white-space: nowrap;
+  }
+
   .publication-nav ul::-webkit-scrollbar {
     display: none;
   }
@@ -2748,6 +2768,12 @@ body:has(.site-footer)::after {
   .publication-hero h1,
   .bulletin-article-hero h1 {
     font-size: 3.1rem;
+  }
+
+  .error-case h1 {
+    max-width: none;
+    font-size: 2.65rem;
+    overflow-wrap: normal;
   }
 
   .bulletin-article-hero {
