@@ -2936,3 +2936,73 @@ body[data-condition="12"] .docket-bar {
 body[data-condition="12"] .case-summary {
   background: rgba(169, 63, 45, 0.06);
 }
+
+/* Form DPH-12, paper edition. The signature block exists only where paper does. */
+.print-signature {
+  display: none;
+}
+
+@media print {
+  .achievement-region,
+  .achievement-state,
+  .prescription,
+  .terminal-dialog,
+  .report-dialog,
+  .field-note-callout a,
+  .bulletin-index-action a {
+    display: none;
+  }
+
+  .symptoms-list legend {
+    border: 1pt solid #000;
+    color: #000;
+    background: #fff;
+  }
+
+  .symptoms-list > div:has(input:checked) {
+    background: #fff;
+  }
+
+  .symptoms-list input {
+    border: 1.5pt solid #000;
+    background: #fff;
+  }
+
+  .symptoms-list input::before {
+    width: auto;
+    height: auto;
+    background: none;
+    color: #000;
+    font: 600 12pt var(--font-mono);
+    line-height: 1;
+    content: "✕";
+  }
+
+  .symptoms-list input:checked {
+    border-color: #000;
+    background: #fff;
+  }
+
+  .print-signature {
+    display: block;
+    margin-top: 2rem;
+    color: #000;
+    font-family: var(--font-mono);
+    font-size: 8pt;
+    text-transform: uppercase;
+    break-inside: avoid;
+  }
+
+  .print-signature-grid {
+    display: flex;
+    gap: 3rem;
+    margin-top: 3.5rem;
+  }
+
+  .print-signature-grid p {
+    flex: 1;
+    margin: 0;
+    padding-top: 0.5rem;
+    border-top: 1pt solid #000;
+  }
+}
