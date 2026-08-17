@@ -1,6 +1,6 @@
 // Department of Prompt Health · Offline continuity plan.
 // This intervention is available offline. Claude is not.
-const CACHE_NAME = "claudeholic-v2";
+const CACHE_NAME = "claudeholic-v3";
 
 const CORE_ASSETS = [
   "./",
@@ -54,6 +54,10 @@ self.addEventListener("activate", (event) => {
   );
 });
 
+// Documents, stylesheets, scripts, and the census ledger prefer freshness so
+// corrections arrive without ceremony; fonts and images prefer existence.
+const NETWORK_FIRST_DESTINATIONS = new Set(["document", "style", "script"]);
+
 self.addEventListener("fetch", (event) => {
   const request = event.request;
 
@@ -61,16 +65,23 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // The census ledger prefers freshness; everything else prefers existence.
-  if (request.url.endsWith("/data/census.json")) {
+  const prefersFresh =
+    request.mode === "navigate" ||
+    NETWORK_FIRST_DESTINATIONS.has(request.destination) ||
+    request.url.endsWith("/data/census.json");
+
+  if (prefersFresh) {
     event.respondWith(
       fetch(request)
         .then((response) => {
-          const copy = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
+          if (response.ok) {
+            const copy = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
+          }
+
           return response;
         })
-        .catch(() => caches.match(request)),
+        .catch(async () => (await caches.match(request)) ?? caches.match("./index.html")),
     );
     return;
   }
@@ -79,16 +90,14 @@ self.addEventListener("fetch", (event) => {
     caches.match(request).then(
       (cached) =>
         cached ??
-        fetch(request)
-          .then((response) => {
-            if (response.ok) {
-              const copy = response.clone();
-              caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
-            }
+        fetch(request).then((response) => {
+          if (response.ok) {
+            const copy = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
+          }
 
-            return response;
-          })
-          .catch(() => (request.mode === "navigate" ? caches.match("./index.html") : Promise.reject(new Error("Offline, and the requested paperwork was never filed locally.")))),
+          return response;
+        }),
     ),
   );
 });
