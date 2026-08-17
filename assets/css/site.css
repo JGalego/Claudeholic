@@ -3662,3 +3662,59 @@ body:has(.exam-dialog[open]) {
     display: none;
   }
 }
+
+/* Ledger filters. The categories were always there; now they answer the door. */
+.field-note-filters {
+  margin-bottom: 3rem;
+}
+
+.field-note-filters > p:first-child {
+  margin-bottom: 0.75rem;
+  color: var(--alert-dark);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+[data-field-note-chipset] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+[data-field-note-chipset] button {
+  padding: 0.5rem 0.85rem;
+  border: 1px solid var(--carbon);
+  color: var(--carbon);
+  background: var(--paper-light);
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+[data-field-note-chipset] button:hover {
+  background: var(--administrative);
+}
+
+[data-field-note-chipset] button[aria-pressed="true"] {
+  color: var(--paper-light);
+  background: var(--carbon);
+}
+
+[data-field-note-count] {
+  margin: 1rem 0 0;
+  color: var(--carbon-soft);
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  text-transform: uppercase;
+}
+
+.field-note-callout-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
