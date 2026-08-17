@@ -380,7 +380,9 @@ main > section > header > p:nth-child(2),
   width: min(100%, 15rem);
   height: auto;
   margin: 0 auto 3rem;
-  transform: rotate(-7deg);
+  /* Baseline lean plus one degree per filed symptom. The seal empathizes. */
+  transform: rotate(calc(-7deg + var(--seal-tilt, 0deg)));
+  transition: transform 600ms cubic-bezier(0.2, 0.75, 0.25, 1);
 }
 
 .case-summary dl {
@@ -2915,4 +2917,22 @@ body:has(.site-footer)::after {
     color: #000;
     background: #fff;
   }
+}
+/* The building notices. Condition styling escalates with the filing. */
+body[data-condition="9"] .docket-bar [data-condition-status],
+body[data-condition="12"] .docket-bar [data-condition-status] {
+  color: var(--alert);
+  font-weight: 600;
+}
+
+body[data-condition="12"]::before {
+  border-color: var(--alert-dark);
+}
+
+body[data-condition="12"] .docket-bar {
+  border-bottom-color: var(--alert);
+}
+
+body[data-condition="12"] .case-summary {
+  background: rgba(169, 63, 45, 0.06);
 }
