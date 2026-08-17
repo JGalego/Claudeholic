@@ -1,6 +1,6 @@
 // Department of Prompt Health · Offline continuity plan.
 // This intervention is available offline. Claude is not.
-const CACHE_NAME = "claudeholic-v1";
+const CACHE_NAME = "claudeholic-v2";
 
 const CORE_ASSETS = [
   "./",
