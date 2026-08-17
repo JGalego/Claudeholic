@@ -180,5 +180,12 @@ export function initAchievements() {
     }
   }
 
-  return { unlock };
+  const snapshot = () =>
+    Object.entries(CATALOG).map(([id, achievement]) => ({
+      id,
+      title: achievement.title,
+      unlocked: unlocked.has(id),
+    }));
+
+  return { unlock, snapshot };
 }

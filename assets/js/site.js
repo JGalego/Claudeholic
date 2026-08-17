@@ -14,4 +14,4 @@ const assessment = initAssessment();
 initReport(assessment.getScore);
 initRecovery(assessment.getScore);
 initPanicProtocol();
-initTerminal(achievements.unlock);
+initTerminal(achievements);
