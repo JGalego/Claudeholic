@@ -163,6 +163,9 @@ h3 {
 main > section > header,
 .assessment-form,
 #assessment > noscript,
+.inspection-form,
+#inspection > noscript,
+.census-returns,
 .stage-list,
 .protocol-list,
 .panic-protocol,
@@ -1628,6 +1631,8 @@ body:has(.report-dialog[open]) {
 }
 
 #records {
+  /* Explicit token color so the night-shift island palette actually applies. */
+  color: var(--carbon);
   background-color: var(--administrative);
   background-image: repeating-linear-gradient(135deg, transparent 0, transparent 3rem, rgba(23, 23, 20, 0.035) calc(3rem + 1px));
 }
@@ -3763,10 +3768,6 @@ body:has(.exam-dialog[open]) {
   background: rgba(30, 29, 22, 0.55);
 }
 
-:root[data-theme="night"] .records-grid li {
-  border-bottom-color: rgba(236, 231, 218, 0.3);
-}
-
 :root[data-theme="night"] ::selection {
   color: var(--paper);
   background: var(--administrative);
@@ -3782,10 +3783,6 @@ body:has(.exam-dialog[open]) {
   :root:not([data-theme="day"]) .case-summary,
   :root:not([data-theme="day"]) body[data-condition="12"] .case-summary {
     background: rgba(30, 29, 22, 0.55);
-  }
-
-  :root:not([data-theme="day"]) .records-grid li {
-    border-bottom-color: rgba(236, 231, 218, 0.3);
   }
 
   :root:not([data-theme="day"]) ::selection {
@@ -3814,5 +3811,84 @@ body:has(.exam-dialog[open]) {
 @media print {
   .theme-shift {
     display: none;
+  }
+}
+
+/* Night shift correction: sections that carry their own colored backgrounds
+   are theme-invariant islands. The daylight palette is restored inside them
+   so their hand-paired contrasts survive the shift intact. */
+:root[data-theme="night"] #stages,
+:root[data-theme="night"] #manifesto,
+:root[data-theme="night"] #records,
+:root[data-theme="night"] .site-footer,
+:root[data-theme="night"] .publication-footer,
+:root[data-theme="night"] .terminal-dialog,
+:root[data-theme="night"] .achievement-toast {
+  --paper: #f3efe6;
+  --paper-deep: #e5ded0;
+  --paper-light: #faf8f2;
+  --carbon: #171714;
+  --carbon-soft: #3f3e38;
+  --alert: #a93f2d;
+  --alert-dark: #7f2c20;
+  --recovery: #245c45;
+  --verification: #145c9e;
+  --administrative: #e6b84a;
+  --rule: #bcb4a5;
+  --rule-dark: #68665e;
+}
+
+:root[data-theme="night"] body:has(.site-footer)::after {
+  background: #171714;
+}
+
+:root[data-theme="night"] .primary-action:hover,
+:root[data-theme="night"] .result-panel button:hover,
+:root[data-theme="night"] .inspection-actions button:hover,
+:root[data-theme="night"] .census-actions button:hover,
+:root[data-theme="night"] [data-field-note-chipset] button:hover,
+:root[data-theme="night"] .exam-actions button:hover:not(:disabled),
+:root[data-theme="night"] .exam-next:hover,
+:root[data-theme="night"] .exam-result-actions button:hover,
+:root[data-theme="night"] [data-history-clear]:hover {
+  color: #171714;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="day"]) #stages,
+  :root:not([data-theme="day"]) #manifesto,
+  :root:not([data-theme="day"]) #records,
+  :root:not([data-theme="day"]) .site-footer,
+  :root:not([data-theme="day"]) .publication-footer,
+  :root:not([data-theme="day"]) .terminal-dialog,
+  :root:not([data-theme="day"]) .achievement-toast {
+    --paper: #f3efe6;
+    --paper-deep: #e5ded0;
+    --paper-light: #faf8f2;
+    --carbon: #171714;
+    --carbon-soft: #3f3e38;
+    --alert: #a93f2d;
+    --alert-dark: #7f2c20;
+    --recovery: #245c45;
+    --verification: #145c9e;
+    --administrative: #e6b84a;
+    --rule: #bcb4a5;
+    --rule-dark: #68665e;
+  }
+
+  :root:not([data-theme="day"]) body:has(.site-footer)::after {
+    background: #171714;
+  }
+
+  :root:not([data-theme="day"]) .primary-action:hover,
+  :root:not([data-theme="day"]) .result-panel button:hover,
+  :root:not([data-theme="day"]) .inspection-actions button:hover,
+  :root:not([data-theme="day"]) .census-actions button:hover,
+  :root:not([data-theme="day"]) [data-field-note-chipset] button:hover,
+  :root:not([data-theme="day"]) .exam-actions button:hover:not(:disabled),
+  :root:not([data-theme="day"]) .exam-next:hover,
+  :root:not([data-theme="day"]) .exam-result-actions button:hover,
+  :root:not([data-theme="day"]) [data-history-clear]:hover {
+    color: #171714;
   }
 }
