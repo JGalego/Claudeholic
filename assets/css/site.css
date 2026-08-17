@@ -3892,3 +3892,114 @@ body:has(.exam-dialog[open]) {
     color: #171714;
   }
 }
+
+/* The evidence locker. Public statements, entered into the record with care. */
+.exhibit-register {
+  width: min(calc(100% - (var(--page-gutter) * 2)), var(--shell));
+  margin: 4rem auto 0;
+  padding-top: 2rem;
+  border-top: 1px solid var(--rule-dark);
+}
+
+.exhibit-register > header > p:first-child {
+  margin-bottom: 1rem;
+  color: var(--signal);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.exhibit-register > header h3 {
+  margin-bottom: 0.75rem;
+  font-size: 2.5rem;
+}
+
+.exhibit-register > header > p:last-child {
+  max-width: 46rem;
+  margin-bottom: 0;
+  color: #c7c0b4;
+}
+
+.exhibit-list {
+  display: grid;
+  margin: 2.5rem 0 0;
+  padding: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--rule-dark);
+  border-left: 1px solid var(--rule-dark);
+  list-style: none;
+}
+
+.exhibit-list > li {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  border-right: 1px solid var(--rule-dark);
+  border-bottom: 1px solid var(--rule-dark);
+}
+
+.exhibit-tag {
+  margin-bottom: 1.5rem;
+  color: var(--signal);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.exhibit-list blockquote {
+  margin: 0 0 1.5rem;
+}
+
+.exhibit-list blockquote p {
+  max-width: 30rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.45rem;
+  line-height: 1.25;
+}
+
+.exhibit-list code {
+  border-color: var(--rule-dark);
+  font-size: 0.68em;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.exhibit-source {
+  margin-top: auto;
+  margin-bottom: 0.75rem;
+  color: #c7c0b4;
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  text-transform: uppercase;
+}
+
+.exhibit-note {
+  margin: 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule-dark);
+  color: #c7c0b4;
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  line-height: 1.6;
+}
+
+.exhibit-note strong {
+  color: var(--administrative);
+}
+
+.exhibit-policy {
+  max-width: 46rem;
+  margin: 2rem 0 0;
+  color: #c7c0b4;
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  text-transform: uppercase;
+}
+
+@media (max-width: 56rem) {
+  .exhibit-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
