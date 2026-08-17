@@ -46,6 +46,7 @@ It has:
 - complete core reading, checklist, stages, and manual scoring without JavaScript;
 - progressive local-only interactions when JavaScript is available;
 - self-hosted fonts and original visual assets;
+- offline support through a dependency-free service worker;
 - a dependency-free validation script; and
 - an official GitHub Pages deployment workflow.
 

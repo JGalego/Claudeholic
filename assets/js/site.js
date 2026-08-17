@@ -25,3 +25,10 @@ initExam(achievements.unlock);
 initPanicProtocol();
 const terminal = initTerminal(achievements);
 initPalette({ openTerminal: terminal.open });
+
+if ("serviceWorker" in navigator) {
+  // Offline continuity: the intervention works without a connection. Claude does not.
+  navigator.serviceWorker.register("./sw.js").catch(() => {
+    // Registration declined (file:// viewing, private mode, or principle). All fine.
+  });
+}
