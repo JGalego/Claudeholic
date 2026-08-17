@@ -3345,3 +3345,66 @@ body:has(.exam-dialog[open]) {
     display: none;
   }
 }
+
+/* Longitudinal record. The line goes up only if you keep filing symptoms. */
+.records-grid .history-record {
+  grid-column: 1 / -1;
+}
+
+.history-chart svg {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--rule);
+  background: var(--paper-light);
+}
+
+.history-baseline {
+  stroke: var(--rule);
+  stroke-width: 1;
+}
+
+.history-ceiling {
+  stroke: var(--rule);
+  stroke-width: 1;
+  stroke-dasharray: 4 6;
+}
+
+.history-line {
+  fill: none;
+  stroke: var(--carbon);
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.history-dot {
+  fill: var(--alert);
+}
+
+.history-caption,
+[data-history-empty] {
+  color: var(--carbon-soft);
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  text-transform: uppercase;
+}
+
+[data-history-empty] {
+  max-width: 46rem;
+}
+
+[data-history-clear] {
+  margin-top: 1rem;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--carbon);
+  color: var(--carbon);
+  background: var(--paper-deep);
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+[data-history-clear]:hover {
+  background: var(--administrative);
+}
