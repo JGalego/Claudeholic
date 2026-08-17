@@ -143,7 +143,8 @@ lives under `assets/launch/`.
 Assessment answers are never transmitted, and individual checkbox selections
 are not persisted. Coarse assessment milestones (including a daily index
 high-water mark with an in-page shred button), unlocked achievements, small
-event flags, and a visit count are stored automatically in `localStorage`;
+event flags, a display-shift preference, and a visit count are stored
+automatically in `localStorage`;
 one-session detection uses `sessionStorage`. Clearing site data removes all of
 it. The site contains no analytics or tracking code.
 

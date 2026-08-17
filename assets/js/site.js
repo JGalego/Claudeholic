@@ -1,3 +1,4 @@
+import "./theme.js";
 import { initAssessment } from "./assessment.js";
 import { initAchievements } from "./achievements.js";
 import { initCensus } from "./census.js";

@@ -3718,3 +3718,101 @@ body:has(.exam-dialog[open]) {
   align-items: flex-start;
   gap: 0.85rem;
 }
+
+/* The night shift. Same bureaucracy, lower lumens. */
+:root[data-theme="night"] {
+  --paper: #181812;
+  --paper-deep: #23221a;
+  --paper-light: #1e1d16;
+  --carbon: #ece7da;
+  --carbon-soft: #b8b2a3;
+  --alert: #d97a63;
+  --alert-dark: #e39a87;
+  --recovery: #6fae8f;
+  --verification: #7aaede;
+  --administrative: #c4a24a;
+  --rule: #4a4840;
+  --rule-dark: #8a8578;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="day"]) {
+    --paper: #181812;
+    --paper-deep: #23221a;
+    --paper-light: #1e1d16;
+    --carbon: #ece7da;
+    --carbon-soft: #b8b2a3;
+    --alert: #d97a63;
+    --alert-dark: #e39a87;
+    --recovery: #6fae8f;
+    --verification: #7aaede;
+    --administrative: #c4a24a;
+    --rule: #4a4840;
+    --rule-dark: #8a8578;
+  }
+}
+
+:root[data-theme="night"] body {
+  background-image:
+    repeating-linear-gradient(0deg, transparent 0, transparent 7px, rgba(236, 231, 218, 0.02) 8px),
+    repeating-linear-gradient(90deg, transparent 0, transparent 11px, rgba(217, 122, 99, 0.015) 12px);
+}
+
+:root[data-theme="night"] .case-summary,
+:root[data-theme="night"] body[data-condition="12"] .case-summary {
+  background: rgba(30, 29, 22, 0.55);
+}
+
+:root[data-theme="night"] .records-grid li {
+  border-bottom-color: rgba(236, 231, 218, 0.3);
+}
+
+:root[data-theme="night"] ::selection {
+  color: var(--paper);
+  background: var(--administrative);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="day"]) body {
+    background-image:
+      repeating-linear-gradient(0deg, transparent 0, transparent 7px, rgba(236, 231, 218, 0.02) 8px),
+      repeating-linear-gradient(90deg, transparent 0, transparent 11px, rgba(217, 122, 99, 0.015) 12px);
+  }
+
+  :root:not([data-theme="day"]) .case-summary,
+  :root:not([data-theme="day"]) body[data-condition="12"] .case-summary {
+    background: rgba(30, 29, 22, 0.55);
+  }
+
+  :root:not([data-theme="day"]) .records-grid li {
+    border-bottom-color: rgba(236, 231, 218, 0.3);
+  }
+
+  :root:not([data-theme="day"]) ::selection {
+    color: var(--paper);
+    background: var(--administrative);
+  }
+}
+
+.theme-shift {
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--rule-dark);
+  color: var(--carbon-soft);
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.theme-shift:hover {
+  color: var(--carbon);
+  border-color: var(--carbon);
+}
+
+@media print {
+  .theme-shift {
+    display: none;
+  }
+}
