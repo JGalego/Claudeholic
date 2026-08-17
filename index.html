@@ -558,6 +558,28 @@
           <p>Three notices filed. More paperwork will be issued only when useful.</p>
           <a class="primary-action" href="./bulletins/">Open the bulletin archive <span aria-hidden="true">→</span></a>
         </div>
+
+        <div class="census-returns" data-census>
+          <div class="census-intro">
+            <p>Annual Context Window Census · Live returns</p>
+            <h3>The census is open. Respondents are counted, never identified.</h3>
+            <p>
+              Returns are filed as public GitHub issues containing one stage
+              number and nothing else, then tallied into a static ledger by a
+              scheduled workflow. Consulting the returns fetches one local JSON
+              file; declining to consult them fetches nothing at all.
+            </p>
+          </div>
+          <div class="census-actions">
+            <a class="primary-action" href="https://github.com/JGalego/Claudeholic/issues/new?template=census-return.yml">File a census return <span aria-hidden="true">→</span></a>
+            <button type="button" data-census-consult hidden>Consult the live returns</button>
+          </div>
+          <div data-census-results aria-live="polite"></div>
+          <p class="census-status" data-census-status aria-live="polite"></p>
+          <noscript>
+            <p>The tallied ledger is published at <a href="./data/census.json">data/census.json</a>. Counting by hand builds character.</p>
+          </noscript>
+        </div>
       </section>
 
       <section id="records" aria-labelledby="records-title">

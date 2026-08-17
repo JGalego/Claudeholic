@@ -27,6 +27,8 @@ verification, learning, breaks, hobbies, and asking humans is entirely sincere.
   doing.
 - **Department Bulletins:** Occasional practical notices with an RSS feed and
   no obligation to feed a content calendar.
+- **Annual Context Window Census:** Live, aggregate-only returns filed through
+  public GitHub issues and tallied into a static ledger by a scheduled workflow.
 - **Approved field notes:** A static, privacy-constrained ledger of recognizable
   tool-use patterns and practical counterparts.
 - **Department records:** Local achievements, fictional institutions, and more
@@ -108,7 +110,9 @@ The implementation follows a few strict rules:
 4. Hidden content has an accessible route and no surprise audio.
 5. Local storage is optional, disclosed, and limited to fictional achievements.
 6. Every network request required by the experience must be visible in the
-   repository. At present, there are none after the initial page load.
+   repository. After the initial page load there is exactly one, and only on
+   request: the census consultation fetches the same-origin, aggregate-only
+   `data/census.json`.
 
 Read [the creative brief](docs/creative-brief.md) for the full editorial and
 technical direction.

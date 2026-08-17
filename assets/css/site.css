@@ -3531,3 +3531,134 @@ body:has(.exam-dialog[open]) {
     display: none;
   }
 }
+
+/* The census office. Aggregate counts, no respondents, unusual hours. */
+.census-returns {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 3px solid var(--carbon);
+}
+
+.census-intro > p:first-child {
+  margin-bottom: 1rem;
+  color: var(--alert-dark);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.census-intro h3 {
+  margin-bottom: 0.75rem;
+  font-size: 2.5rem;
+}
+
+.census-intro > p:last-child {
+  max-width: 46rem;
+  color: var(--carbon-soft);
+}
+
+.census-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+
+.census-actions button {
+  display: inline-flex;
+  min-height: 3.25rem;
+  align-items: center;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--carbon);
+  color: var(--carbon);
+  background: var(--paper-deep);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.census-actions button:hover {
+  background: var(--administrative);
+}
+
+.census-actions button:disabled {
+  color: var(--rule-dark);
+  cursor: progress;
+}
+
+.census-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.census-list li {
+  display: grid;
+  grid-template-columns: minmax(14rem, 22rem) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.census-list li[data-current="true"] .census-label {
+  color: var(--alert);
+  font-weight: 600;
+}
+
+.census-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+}
+
+.census-bar {
+  position: relative;
+  display: block;
+  height: 1.1rem;
+  background: var(--paper-deep);
+}
+
+.census-bar::before {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--census-share, 0%);
+  background: var(--carbon);
+  content: "";
+}
+
+.census-list li[data-current="true"] .census-bar::before {
+  background: var(--alert);
+}
+
+.census-figure,
+.census-summary,
+.census-status {
+  color: var(--carbon-soft);
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  text-transform: uppercase;
+}
+
+.census-summary {
+  margin: 1rem 0 0;
+}
+
+@media (max-width: 56rem) {
+  .census-list li {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .census-list .census-bar {
+    display: none;
+  }
+}
+
+@media print {
+  .census-actions,
+  .census-status {
+    display: none;
+  }
+}

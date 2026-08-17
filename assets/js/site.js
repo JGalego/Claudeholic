@@ -1,5 +1,6 @@
 import { initAssessment } from "./assessment.js";
 import { initAchievements } from "./achievements.js";
+import { initCensus } from "./census.js";
 import { initCondition } from "./condition.js";
 import { initExam } from "./exam.js";
 import { initHistory } from "./history.js";
@@ -19,6 +20,7 @@ const assessment = initAssessment();
 initReport(assessment.getScore);
 initRecovery(assessment.getScore);
 initInspection();
+initCensus();
 initExam(achievements.unlock);
 initPanicProtocol();
 const terminal = initTerminal(achievements);

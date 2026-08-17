@@ -1,0 +1,35 @@
+name: Annual Context Window Census return
+description: File your current stage with the Bureau. One dropdown, zero personal data.
+title: "[Census] Stage return"
+labels:
+  - census-return
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This creates a public GitHub issue linked to your GitHub account. The tallied ledger published on the site contains only aggregate counts per stage — never usernames. Do not add symptoms, stories, prompts, or personal information; the census counts respondents, it does not read them. A scheduled workflow aggregates returns into `data/census.json`. Duplicate returns from the same enthusiasm are gently deduplicated by nobody; please file once.
+
+  - type: dropdown
+    id: stage
+    attributes:
+      label: Current stage filing
+      description: Consult the diagnostic ladder at https://claudeholic.me/#stages, then select the stage you are prepared to admit to.
+      options:
+        - Stage 0 — Healthy curiosity
+        - Stage 1 — The polite return
+        - Stage 3 — Prompt engineer
+        - Stage 6 — Local MCP collector
+        - Stage 9 — Context window maximalist
+        - Stage 12 — Release notes recreationalist
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: boundaries
+    attributes:
+      label: Census boundaries
+      options:
+        - label: I understand this issue is public and linked to my GitHub account, while the published tally is aggregate-only.
+          required: true
+        - label: I have added no personal, medical, workplace, or confidential information, because the form gave me nowhere to put it.
+          required: true

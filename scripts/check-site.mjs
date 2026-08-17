@@ -425,6 +425,24 @@ for (const [index, bulletinFile] of bulletinFiles.entries()) {
   report(sitemap.includes(`<loc>${bulletinUrl}</loc>`), `Sitemap must contain ${bulletinFile}`);
 }
 
+const census = JSON.parse(fs.readFileSync(path.join(ROOT, "data", "census.json"), "utf8"));
+const censusStageKeys = ["0", "1", "3", "6", "9", "12"];
+
+report(census.schemaVersion === 1, "Census data must use schema version 1");
+report(/^\d{4}-\d{2}-\d{2}$/.test(census.updated), "Census data must carry an ISO date");
+report(
+  JSON.stringify(Object.keys(census.stages ?? {}).sort((a, b) => Number(a) - Number(b))) === JSON.stringify(censusStageKeys),
+  "Census data must contain exactly the canonical stage keys",
+);
+report(
+  censusStageKeys.every((key) => Number.isInteger(census.stages?.[key]) && census.stages[key] >= 0),
+  "Census stage counts must be non-negative integers",
+);
+report(
+  census.totalReturns === censusStageKeys.reduce((sum, key) => sum + (census.stages?.[key] ?? 0), 0),
+  "Census total must equal the sum of stage counts",
+);
+
 report(fieldNotes.schemaVersion === 1, "Field-note data must use schema version 1");
 report(fieldNotes.license === "CC-BY-4.0", "Field-note data must declare the content license");
 report(Array.isArray(fieldNotes.notes) && fieldNotes.notes.length > 0, "Field-note data must contain approved observations");
