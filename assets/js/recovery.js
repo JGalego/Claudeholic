@@ -1,4 +1,4 @@
-const PRESCRIPTIONS = [
+export const PRESCRIPTIONS = [
   "Close one browser tab. Not the important one. Start with the tab you cannot identify.",
   "Read one page of the primary documentation before asking for a summary.",
   "Write the next function unaided. You may complain quietly while doing so.",
@@ -8,7 +8,7 @@ const PRESCRIPTIONS = [
   "Spend ten minutes on a hobby with no version number.",
 ];
 
-function prescriptionIndex(score, date = new Date()) {
+export function prescriptionIndex(score, date = new Date()) {
   const dayKey = Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()) / 86_400_000;
   return Math.abs(dayKey + score) % PRESCRIPTIONS.length;
 }

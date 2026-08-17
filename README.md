@@ -73,6 +73,18 @@ npm test
 
 No installation step is required. This is deliberate.
 
+Browser smoke tests exist for the interactive paperwork. They fetch their dev
+tooling on demand and never touch the production site's dependency count:
+
+```bash
+npm i --no-save @playwright/test
+npx playwright install chromium
+npx playwright test
+```
+
+Continuous integration runs the unit tests, the static review, the browser
+smoke tests, and a Lighthouse audit on every pull request.
+
 ## Repository map
 
 ```text

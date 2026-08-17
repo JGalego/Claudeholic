@@ -1,0 +1,72 @@
+name: Audit the auditors
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: quality-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    name: Review the paperwork
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the case file
+        uses: actions/checkout@v4
+
+      - name: Prepare Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Run unit tests and the static review
+        run: npm test
+
+  smoke:
+    name: Operate the machinery in a real browser
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the case file
+        uses: actions/checkout@v4
+
+      - name: Prepare Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # Dev tooling is fetched on demand; the production site keeps zero dependencies.
+      - name: Requisition the test harness
+        run: npm i --no-save @playwright/test
+
+      - name: Install a departmental browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Exercise the interactive paperwork
+        run: npx playwright test
+
+      - name: File the evidence on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-evidence
+          path: test-results/
+          retention-days: 7
+
+  lighthouse:
+    name: Measure the premises
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the case file
+        uses: actions/checkout@v4
+
+      - name: Run Lighthouse against the static site
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          configPath: .github/lighthouserc.json
+          uploadArtifacts: true
+          temporaryPublicStorage: false
