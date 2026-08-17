@@ -66,7 +66,7 @@ function createDialog() {
   return dialog;
 }
 
-function wrapCanvasText(context, text, maximumWidth) {
+export function wrapCanvasText(context, text, maximumWidth) {
   const words = text.split(/\s+/);
   const lines = [];
   let line = "";
@@ -89,7 +89,7 @@ function wrapCanvasText(context, text, maximumWidth) {
   return lines;
 }
 
-function drawSeal(context, centerX, centerY) {
+export function drawSeal(context, centerX, centerY) {
   context.save();
   context.translate(centerX, centerY);
   context.rotate(-0.1);

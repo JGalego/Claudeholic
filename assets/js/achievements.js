@@ -58,6 +58,10 @@ const CATALOG = {
     title: "Clean desk certificate",
     description: "Submitted a draft that passed context hygiene inspection.",
   },
+  "certified-inspector": {
+    title: "Certified Context Window Inspector",
+    description: "Passed the personnel examination. Authority remains fictional.",
+  },
 };
 
 function readJson(storage, key, fallback) {

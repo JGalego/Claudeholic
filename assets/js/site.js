@@ -1,6 +1,7 @@
 import { initAssessment } from "./assessment.js";
 import { initAchievements } from "./achievements.js";
 import { initCondition } from "./condition.js";
+import { initExam } from "./exam.js";
 import { initInspection } from "./inspection.js";
 import { initPanicProtocol } from "./panic.js";
 import { initRecovery } from "./recovery.js";
@@ -15,5 +16,6 @@ const assessment = initAssessment();
 initReport(assessment.getScore);
 initRecovery(assessment.getScore);
 initInspection();
+initExam(achievements.unlock);
 initPanicProtocol();
 initTerminal(achievements);

@@ -3167,3 +3167,181 @@ body[data-condition="12"] .case-summary {
     display: none;
   }
 }
+
+/* The examination hall. Two stamps, six exhibits, zero legal standing. */
+.exam-callout {
+  display: grid;
+  width: min(calc(100% - (var(--page-gutter) * 2)), var(--shell));
+  margin: 4rem auto 0;
+  padding-top: 2rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 3rem;
+  border-top: 3px solid var(--carbon);
+}
+
+.exam-callout > div > p:first-child {
+  margin-bottom: 1rem;
+  color: var(--alert-dark);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.exam-callout h3 {
+  margin-bottom: 0.75rem;
+  font-size: 2.5rem;
+}
+
+.exam-callout > div > p:last-child {
+  max-width: 42rem;
+  margin: 0;
+  color: var(--carbon-soft);
+}
+
+.exam-dialog {
+  width: min(52rem, calc(100% - 2rem));
+  max-width: none;
+  max-height: calc(100% - 2rem);
+  padding: 0;
+  border: 1px solid var(--carbon);
+  border-radius: 0;
+  color: var(--carbon);
+  background: var(--paper);
+  box-shadow: 0.75rem 0.75rem 0 var(--verification);
+}
+
+.exam-dialog[open] {
+  animation: terminal-enter 180ms ease-out both;
+}
+
+.exam-dialog::backdrop {
+  background: rgba(23, 23, 20, 0.88);
+}
+
+body:has(.exam-dialog[open]) {
+  overflow: hidden;
+}
+
+.exam-body {
+  padding: 1.5rem;
+}
+
+.exam-progress {
+  color: var(--alert);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.exam-exhibit {
+  margin: 1rem 0 1.5rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--carbon);
+  background: var(--paper-light);
+}
+
+.exam-exhibit p {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.exam-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.exam-actions button,
+.exam-next,
+.exam-result-actions button {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--carbon);
+  color: var(--paper-light);
+  background: var(--carbon);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.exam-actions button:hover,
+.exam-next:hover,
+.exam-result-actions button:hover {
+  color: var(--carbon);
+  background: var(--administrative);
+}
+
+.exam-actions [data-exam-stamp="return"] {
+  color: var(--alert);
+  background: var(--paper-deep);
+}
+
+.exam-actions [data-exam-stamp="return"]:hover {
+  color: var(--carbon);
+  background: var(--administrative);
+}
+
+.exam-actions button:disabled {
+  color: var(--rule-dark);
+  background: var(--paper-deep);
+  cursor: not-allowed;
+}
+
+.exam-feedback {
+  min-height: 1.5em;
+  margin: 1.25rem 0;
+}
+
+.exam-feedback[data-state="correct"] {
+  color: var(--recovery);
+}
+
+.exam-feedback[data-state="incorrect"] {
+  color: var(--alert-dark);
+}
+
+.exam-next {
+  margin-bottom: 1rem;
+}
+
+.exam-result {
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+}
+
+.exam-result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+.exam-note {
+  margin: 1rem 0 0;
+  color: var(--carbon-soft);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+}
+
+@media (max-width: 56rem) {
+  .exam-callout {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+@media print {
+  .exam-callout,
+  .exam-dialog {
+    display: none;
+  }
+}
