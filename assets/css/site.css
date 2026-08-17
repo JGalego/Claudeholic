@@ -3408,3 +3408,126 @@ body:has(.exam-dialog[open]) {
 [data-history-clear]:hover {
   background: var(--administrative);
 }
+
+/* The requisition palette. Muscle memory is the one dependency we endorse. */
+.palette-hint {
+  display: none;
+  color: var(--carbon-soft);
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  text-transform: uppercase;
+}
+
+.js .palette-hint {
+  display: block;
+}
+
+.palette-hint kbd {
+  padding: 0.05em 0.35em;
+  border: 1px solid var(--rule-dark);
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+.palette-dialog {
+  width: min(38rem, calc(100% - 2rem));
+  max-width: none;
+  margin-top: 8vh;
+  padding: 0;
+  border: 1px solid var(--carbon);
+  border-radius: 0;
+  color: var(--carbon);
+  background: var(--paper);
+  box-shadow: 0.75rem 0.75rem 0 var(--administrative);
+}
+
+.palette-dialog[open] {
+  animation: terminal-enter 140ms ease-out both;
+}
+
+.palette-dialog::backdrop {
+  background: rgba(23, 23, 20, 0.7);
+}
+
+.palette-form {
+  display: flex;
+  border-bottom: 1px solid var(--carbon);
+}
+
+.palette-form label {
+  display: flex;
+  align-items: center;
+  padding: 0 0 0 1rem;
+  color: var(--alert);
+}
+
+.palette-form input {
+  width: 100%;
+  padding: 1rem;
+  border: 0;
+  background: transparent;
+  color: var(--carbon);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+}
+
+.palette-form input:focus-visible {
+  outline: none;
+}
+
+.palette-list {
+  max-height: 20rem;
+  margin: 0;
+  padding: 0.4rem 0;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.palette-list li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+}
+
+.palette-list li[data-active="true"] {
+  color: var(--paper-light);
+  background: var(--carbon);
+}
+
+.palette-list li small {
+  color: var(--rule-dark);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.palette-list li[data-active="true"] small {
+  color: var(--administrative);
+}
+
+.palette-empty {
+  margin: 0;
+  padding: 1rem;
+  color: var(--carbon-soft);
+}
+
+.palette-footer {
+  margin: 0;
+  padding: 0.6rem 1rem;
+  border-top: 1px solid var(--rule);
+  color: var(--carbon-soft);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+}
+
+@media print {
+  .palette-dialog,
+  .palette-hint {
+    display: none;
+  }
+}
