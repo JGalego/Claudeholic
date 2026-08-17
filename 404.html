@@ -55,5 +55,17 @@
         </p>
       </aside>
     </main>
+
+    <script type="module">
+      // The incident is filed locally so the intervention can acknowledge it later.
+      try {
+        const key = "claudeholic.flags.v1";
+        const flags = JSON.parse(localStorage.getItem(key)) ?? {};
+        flags.missingContext = true;
+        localStorage.setItem(key, JSON.stringify(flags));
+      } catch {
+        // The incident remains unfiled. The Department accepts this outcome.
+      }
+    </script>
   </body>
 </html>

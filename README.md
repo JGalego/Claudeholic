@@ -134,10 +134,10 @@ lives under `assets/launch/`.
 ## Privacy
 
 Assessment answers are never transmitted, and individual checkbox selections
-are not persisted. Coarse assessment milestones, unlocked achievements, and a
-visit count are stored automatically in `localStorage`; one-session detection
-uses `sessionStorage`. Clearing site data removes all of it. The site contains
-no analytics or tracking code.
+are not persisted. Coarse assessment milestones, unlocked achievements, small
+event flags, and a visit count are stored automatically in `localStorage`;
+one-session detection uses `sessionStorage`. Clearing site data removes all of
+it. The site contains no analytics or tracking code.
 
 ## Contributing
 

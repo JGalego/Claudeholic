@@ -1,6 +1,7 @@
 const ACHIEVEMENT_KEY = "claudeholic.achievements.v1";
 const VISIT_KEY = "claudeholic.visits.v1";
 const SESSION_KEY = "claudeholic.session-seen.v1";
+const FLAGS_KEY = "claudeholic.flags.v1";
 
 const CATALOG = {
   "self-awareness": {
@@ -32,6 +33,26 @@ const CATALOG = {
   "terminal-mode": {
     title: "Found the interface beneath the interface",
     description: "Found the interface beneath the interface. This will not help your assessment.",
+  },
+  "analog-walk": {
+    title: "Analog excursion complete",
+    description: "Reached something photosynthetic via the restricted terminal.",
+  },
+  "night-shift": {
+    title: "Night shift acknowledged",
+    description: "Visited between 02:00 and 05:00. The Department notes the hour without judgment.",
+  },
+  "paper-form": {
+    title: "Paper edition respondent",
+    description: "Printed Form DPH-12. The analog filing system survives.",
+  },
+  "footnote-scholar": {
+    title: "Footnote scholar",
+    description: "Read every footnote. Peer review may now proceed.",
+  },
+  "missing-context": {
+    title: "Context not found",
+    description: "Visited a page that had left the conversation, then filed the incident anyway.",
   },
 };
 
@@ -114,6 +135,14 @@ export function initAchievements() {
     window.setTimeout(() => toast.remove(), 8_000);
   };
 
+  const progress = document.createElement("p");
+  progress.className = "achievement-progress";
+  document.querySelector("#achievements-title")?.insertAdjacentElement("afterend", progress);
+
+  const renderProgress = () => {
+    progress.textContent = `${unlocked.size} of ${Object.keys(CATALOG).length} filed locally. Some filings require unusual behavior.`;
+  };
+
   const unlock = (id, { notify = true } = {}) => {
     const achievement = CATALOG[id];
 
@@ -124,6 +153,7 @@ export function initAchievements() {
     unlocked.add(id);
     writeJson(localStorage, ACHIEVEMENT_KEY, [...unlocked]);
     renderState(id);
+    renderProgress();
 
     if (notify) {
       showToast(achievement);
@@ -150,8 +180,43 @@ export function initAchievements() {
     }
   });
 
+  renderProgress();
+
   document.addEventListener("claudeholic:panic-complete", () => unlock("analog-protocol"));
+  document.addEventListener("claudeholic:analog-walk", () => unlock("analog-walk"));
   sourceLink?.addEventListener("click", () => unlock("primary-source"));
+
+  window.addEventListener("beforeprint", () => unlock("paper-form"));
+  matchMedia("print").addEventListener?.("change", (event) => {
+    if (event.matches) {
+      unlock("paper-form");
+    }
+  });
+
+  const currentHour = new Date().getHours();
+
+  if (currentHour >= 2 && currentHour < 5) {
+    unlock("night-shift");
+  }
+
+  const footnotes = document.querySelector("#footnotes-title")?.closest("section");
+
+  if (footnotes && "IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.intersectionRatio >= 0.9)) {
+          unlock("footnote-scholar");
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.9 },
+    );
+    observer.observe(footnotes);
+  }
+
+  if (readJson(localStorage, FLAGS_KEY, {}).missingContext) {
+    window.setTimeout(() => unlock("missing-context"), 1_500);
+  }
 
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) {

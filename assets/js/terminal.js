@@ -312,7 +312,7 @@ export function initTerminal(achievements = {}) {
       ];
     },
     privacy() {
-      return ["No analytics. No cookies. No remote shell.", "Achievements and visit count use localStorage; session-seen detection uses sessionStorage.", "Clear browser site data to shred both records."];
+      return ["No analytics. No cookies. No remote shell.", "Achievements, visit count, and small event flags use localStorage; session-seen detection uses sessionStorage.", "Clear browser site data to shred every record."];
     },
     "touch-grass"() {
       return ["ERROR: Physical world cannot be rendered in this terminal.", "Suggested action: close terminal, locate door, proceed without API.", 'See also: "go-outside", a supervised alternative.'];
