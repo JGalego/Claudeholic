@@ -21,6 +21,8 @@ verification, learning, breaks, hobbies, and asking humans is entirely sincere.
   release-note reading.
 - **Recovery program:** Seven small ways to restore human agency without
   deleting every useful tool.
+- **Context hygiene inspection:** A local prompt checker that flags secrets,
+  excess context, and missing stopping conditions. Nothing leaves the desk.
 - **Balance manifesto:** A sincere case for craft, skepticism, and learning by
   doing.
 - **Department Bulletins:** Occasional practical notices with an RSS feed and

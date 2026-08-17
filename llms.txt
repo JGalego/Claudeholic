@@ -22,6 +22,7 @@ The human-readable website is the canonical source. This file exists to make the
 - [Stages of Claudeholism](https://claudeholic.me/#stages): A fictional progression from healthy curiosity to recreational release-note reading.
 - [Recovery program](https://claudeholic.me/#recovery): Practical advice about breaks, primary sources, privacy, verification, learning, human collaboration, and offline hobbies.
 - [Balance manifesto](https://claudeholic.me/#manifesto): A sincere argument for using AI to expand human agency rather than replace it.
+- [Context hygiene inspection](https://claudeholic.me/#inspection): A local, heuristic prompt checker that flags secrets, excess context, and missing stopping conditions without transmitting anything.
 - [Department Bulletins](https://claudeholic.me/#bulletins): Occasional editorial guidance that remains useful after the joke.
 - [Disclaimer and privacy](https://claudeholic.me/#disclaimer): Non-affiliation, non-medical framing, and a no-analytics privacy statement.
 

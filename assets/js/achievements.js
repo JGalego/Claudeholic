@@ -54,6 +54,10 @@ const CATALOG = {
     title: "Context not found",
     description: "Visited a page that had left the conversation, then filed the incident anyway.",
   },
+  "clean-desk": {
+    title: "Clean desk certificate",
+    description: "Submitted a draft that passed context hygiene inspection.",
+  },
 };
 
 function readJson(storage, key, fallback) {
@@ -184,6 +188,11 @@ export function initAchievements() {
 
   document.addEventListener("claudeholic:panic-complete", () => unlock("analog-protocol"));
   document.addEventListener("claudeholic:analog-walk", () => unlock("analog-walk"));
+  document.addEventListener("claudeholic:inspection", (event) => {
+    if (event.detail.verdict === "approved" && event.detail.tokens > 0) {
+      unlock("clean-desk");
+    }
+  });
   sourceLink?.addEventListener("click", () => unlock("primary-source"));
 
   window.addEventListener("beforeprint", () => unlock("paper-form"));

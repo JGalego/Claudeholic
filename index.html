@@ -75,6 +75,7 @@
           <li><a href="#stages">Stages</a></li>
           <li><a href="#recovery">Recovery</a></li>
           <li><a href="#manifesto">Manifesto</a></li>
+          <li><a href="#inspection">Inspection</a></li>
           <li><a href="#bulletins">Bulletins</a></li>
         </ul>
       </nav>
@@ -452,10 +453,59 @@
         </div>
       </section>
 
+      <section id="inspection" aria-labelledby="inspection-title">
+        <header>
+          <p>Bureau of Context Hygiene · Inspection desk</p>
+          <p>05 / Context hygiene inspection</p>
+          <h2 id="inspection-title">Submit a draft prompt for inspection.</h2>
+          <p>
+            A local inspector reviews drafts for secrets, excess context, and
+            missing stopping conditions. Nothing you paste leaves this page;
+            the inspector has no network access and no opinions about you.
+          </p>
+        </header>
+
+        <form class="inspection-form">
+          <div class="inspection-desk">
+            <label for="inspection-input">Draft prompt for review</label>
+            <textarea
+              id="inspection-input"
+              name="draft"
+              rows="8"
+              spellcheck="false"
+              placeholder="Paste the prompt you were about to send. The desk reads it here and only here."
+            ></textarea>
+            <div class="inspection-actions">
+              <button type="submit">Request inspection</button>
+              <button type="button" data-inspection-sample>Inspect a suspicious specimen</button>
+            </div>
+          </div>
+
+          <div class="inspection-report" hidden>
+            <p class="inspection-stamp" data-inspection-stamp aria-live="polite"></p>
+            <p class="inspection-meta" data-inspection-meta></p>
+            <ul class="inspection-findings" data-inspection-findings></ul>
+            <p class="inspection-note">
+              Inspected locally. The draft was not stored, transmitted, or
+              judged morally. Findings are heuristics, not guarantees; the
+              absence of findings is not a security review.
+            </p>
+          </div>
+        </form>
+
+        <noscript>
+          <p>
+            The inspection desk requires JavaScript. The manual procedure works
+            offline: remove anything you would not put on a projector, delete
+            half the context, and state when you intend to stop.
+          </p>
+        </noscript>
+      </section>
+
       <section id="bulletins" aria-labelledby="bulletins-title">
         <header>
           <p>Bureau of Context Hygiene · Public notices</p>
-          <p>05 / Department bulletins</p>
+          <p>06 / Department bulletins</p>
           <h2 id="bulletins-title">Guidance for a rapidly changing condition.</h2>
           <p>
             Occasional field notes for surviving new models, larger context
@@ -513,7 +563,7 @@
       <section id="records" aria-labelledby="records-title">
         <header>
           <p>Public records · Some portions tastefully redacted</p>
-          <p>06 / Department records</p>
+          <p>07 / Department records</p>
           <h2 id="records-title">For those still reading.</h2>
         </header>
 

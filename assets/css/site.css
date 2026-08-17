@@ -3014,3 +3014,156 @@ body[data-condition="12"] .case-summary {
   font-size: 0.67rem;
   text-transform: uppercase;
 }
+
+/* The inspection desk. All findings are generated and retained at the desk. */
+.inspection-form {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  border: 1px solid var(--carbon);
+  background: var(--paper-light);
+}
+
+.inspection-desk {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  border-right: 1px solid var(--rule);
+}
+
+.inspection-desk label {
+  margin-bottom: 0.75rem;
+  color: var(--alert);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.inspection-desk textarea {
+  min-height: 12rem;
+  padding: 1rem;
+  border: 1px solid var(--carbon);
+  border-radius: 0;
+  background: var(--paper);
+  color: var(--carbon);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+.inspection-desk textarea:focus-visible {
+  outline: var(--focus);
+  outline-offset: 2px;
+}
+
+.inspection-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.inspection-actions button {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--carbon);
+  color: var(--paper-light);
+  background: var(--carbon);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.inspection-actions button:hover {
+  color: var(--carbon);
+  background: var(--administrative);
+}
+
+.inspection-actions [data-inspection-sample] {
+  color: var(--carbon);
+  background: var(--paper-deep);
+}
+
+.inspection-report {
+  padding: 1.5rem;
+}
+
+.inspection-stamp {
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0.9rem;
+  border: 3px double var(--recovery);
+  color: var(--recovery);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  transform: rotate(-2deg);
+}
+
+.inspection-stamp[data-verdict="returned"] {
+  border-color: var(--alert);
+  color: var(--alert);
+}
+
+.inspection-meta {
+  color: var(--carbon-soft);
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  text-transform: uppercase;
+}
+
+.inspection-findings {
+  margin: 1rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.inspection-findings li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 1rem;
+}
+
+.inspection-findings li:last-child {
+  border-bottom: 0;
+}
+
+.inspection-findings li[data-severity="redact"] strong {
+  color: var(--alert);
+}
+
+.inspection-findings li[data-severity="trim"] strong {
+  color: var(--alert-dark);
+}
+
+.inspection-findings li[data-severity="commendation"] strong {
+  color: var(--recovery);
+}
+
+.inspection-note {
+  color: var(--carbon-soft);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 56rem) {
+  .inspection-form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .inspection-desk {
+    border-right: 0;
+    border-bottom: 1px solid var(--rule);
+  }
+}
+
+@media print {
+  .inspection-form,
+  #inspection noscript {
+    display: none;
+  }
+}
