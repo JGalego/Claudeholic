@@ -20,6 +20,7 @@ The human-readable website is the canonical source. This file exists to make the
 
 - [Dependency check](https://claudeholic.me/#assessment): Twelve increasingly specific habits, scored only in the visitor's browser.
 - [Stages of Claudeholism](https://claudeholic.me/#stages): A fictional progression from healthy curiosity to recreational release-note reading.
+- [Evidence locker](https://claudeholic.me/#stages): Linked public remarks, personal essays, and research about AI, creative ownership, productive struggle, learning, and human agency.
 - [Recovery program](https://claudeholic.me/#recovery): Practical advice about breaks, primary sources, privacy, verification, learning, human collaboration, and offline hobbies.
 - [Balance manifesto](https://claudeholic.me/#manifesto): A sincere argument for using AI to expand human agency rather than replace it.
 - [Context hygiene inspection](https://claudeholic.me/#inspection): A local, heuristic prompt checker that flags secrets, excess context, and missing stopping conditions without transmitting anything.

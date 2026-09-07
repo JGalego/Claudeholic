@@ -98,6 +98,42 @@ quoted by Steven Levy in WIRED on May 26, 2026. Cherny compared the experience
 to having a jet pack that he could not stop thinking about. The linked source is
 https://www.wired.com/story/how-ai-agents-plunged-tech-world-into-chaos/.
 
+## Evidence locker
+
+The homepage evidence locker combines public remarks, personal essays, and
+published research. It includes several sources about generative AI, creative
+ownership, productive struggle, and the joy of learning:
+
+- Joanna Maciejewska wrote that she wanted AI to do her laundry and dishes so
+	she could make art and write, rather than the reverse. The original post from
+	March 29, 2024 is https://x.com/AuthorJMac/status/1773679197631701238.
+- Nick Cave wrote, “It is our striving that becomes the very essence of
+	meaning,” in The Red Hand Files, Issue 248, August 2023:
+	https://www.theredhandfiles.com/chatgpt-making-things-faster-and-easier/.
+- Kevin Renskers described being highly productive with AI while feeling little
+	joy or pride in the result in “Coding with AI: productivity without pride or
+	joy,” April 1, 2026:
+	https://www.loopwerk.io/articles/2026/ai-productivity-without-joy/.
+- Ian Fellows argued that learning is among the most joyful human activities in
+	“Generative AI Robs Students of the Joy of Learning,” published in the GiLE
+	Journal of Skills Development on April 12, 2025:
+	https://gjsd.gile-edu.org/index.php/home/article/view/228. This is a published
+	educational argument, not a causal experimental finding.
+- Two poetry experiments reported by Jack McGuire, David De Cremer, and Tim Van
+	de Cruys found that participants assigned the role of AI-output editor had
+	lower creative self-efficacy and less creative results than participants who
+	wrote alone or co-created iteratively with AI. The 2024 Scientific Reports
+	article is https://doi.org/10.1038/s41598-024-69423-2. The findings concern
+	the tested interfaces and poetry tasks; they are not a universal law of art.
+- Travis Tae Oh argued that AI can remove meaningful friction for experts while
+	also acknowledging that it may give beginners confidence, access, and joy in
+	“Has GenAI Taken the Fun Out of Creative Work?”, updated May 22, 2025:
+	https://www.psychologytoday.com/us/blog/the-pursuit-of-fun/202505/has-genai-taken-the-fun-out-of-creative-work.
+
+The collection supports the site's position that the important distinction is
+not simply AI use versus non-use. Agency, authorship, learning, and whether the
+human remains a co-creator all affect the experience.
+
 ## Recovery program
 
 The International Claudeholics Association is a fictional peer group. Its seven-step program contains practical advice beneath the satire:
